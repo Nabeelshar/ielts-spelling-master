@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Spelling Master</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafc; --bg2: #ffffff; --bg3: #f1f5f9; --bg4: #e2e8f0;
+  --text: #0f172a; --text2: #334155; --text3: #64748b; --text4: #94a3b8;
+  --primary: #3b82f6; --primary-dark: #2563eb; --primary-light: #dbeafe;
+  --accent: #8b5cf6; --accent-light: #ede9fe;
+  --success: #10b981; --success-light: #d1fae5;
+  --warning: #f59e0b; --warning-light: #fef3c7;
+  --danger: #ef4444; --danger-light: #fee2e2;
+  --border: #e2e8f0; --shadow: rgba(0,0,0,0.06);
+  --radius: 12px; --radius-sm: 8px; --radius-lg: 16px;
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --sidebar-w: 280px;
+  --cat-commercial: #3b82f6; --cat-materials: #8b5cf6; --cat-health: #10b981;
+  --cat-travel: #f59e0b; --cat-consonant: #ef4444; --cat-silent: #ec4899;
+  --cat-ei: #06b6d4; --cat-morpho: #84cc16; --cat-homo: #f97316;
+  --cat-awl1: #6366f1; --cat-awl2: #14b8a6; --cat-awl3: #a855f7;
+  --cat-trends: #0ea5e9; --cat-proportional: #22c55e; --cat-maps: #eab308;
+  --cat-process: #d946ef; --cat-linking: #64748b; --cat-gov: #dc2626;
+  --cat-env: #16a34a; --cat-tech: #7c3aed; --cat-edu: #2563eb;
+  --cat-crime: #991b1b; --cat-personality: #c026d3; --cat-art: #ea580c;
+  --cat-synonyms: #0d9488;
+}
+[data-theme="dark"] {
+  --bg: #0f172a; --bg2: #1e293b; --bg3: #1e293b; --bg4: #334155;
+  --text: #f1f5f9; --text2: #cbd5e1; --text3: #94a3b8; --text4: #64748b;
+  --primary-light: #1e3a5f; --accent-light: #2e1065;
+  --success-light: #064e3b; --warning-light: #451a03; --danger-light: #450a0a;
+  --border: #334155; --shadow: rgba(0,0,0,0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); transition: background .3s, color .3s; overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--text4); border-radius: 3px; }
+
+/* Sidebar */
+.sidebar { position: fixed; left: 0; top: 0; width: var(--sidebar-w); height: 100vh; background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; transition: transform .3s; }
+.sidebar-header { padding: 20px; border-bottom: 1px solid var(--border); }
+.sidebar-header h1 { font-size: 18px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.sidebar-header p { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.sidebar-nav { flex: 1; overflow-y: auto; padding: 12px; }
+.nav-section { margin-bottom: 16px; }
+.nav-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text4); padding: 4px 8px; margin-bottom: 4px; }
+.nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text2); transition: all .15s; position: relative; }
+.nav-item:hover { background: var(--bg3); color: var(--text); }
+.nav-item.active { background: var(--primary-light); color: var(--primary); font-weight: 600; }
+.nav-item .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.nav-item .badge { margin-left: auto; font-size: 10px; padding: 1px 6px; border-radius: 10px; background: var(--bg4); color: var(--text3); font-weight: 600; }
+.sidebar-footer { padding: 16px; border-top: 1px solid var(--border); }
+.xp-bar-wrap { margin-bottom: 8px; }
+.xp-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); margin-bottom: 4px; }
+.xp-bar { height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden; }
+.xp-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 3px; transition: width .5s; }
+.streak-info { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text3); }
+
+/* Main content */
+.main { margin-left: var(--sidebar-w); min-height: 100vh; }
+.topbar { position: sticky; top: 0; z-index: 50; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(10px); }
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--text); font-size: 20px; }
+.topbar h2 { font-size: 16px; font-weight: 700; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.theme-toggle { background: var(--bg3); border: 1px solid var(--border); border-radius: 20px; padding: 6px 12px; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; color: var(--text2); transition: all .2s; }
+.theme-toggle:hover { background: var(--bg4); }
+.daily-goal { font-size: 12px; color: var(--text3); display: flex; align-items: center; gap: 6px; }
+.daily-goal .count { font-weight: 700; color: var(--primary); }
+
+.content { padding: 24px; max-width: 900px; margin: 0 auto; }
+
+/* Cards */
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px var(--shadow); transition: all .2s; }
+.card:hover { box-shadow: 0 4px 12px var(--shadow); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.card-title { font-size: 18px; font-weight: 700; }
+.card-subtitle { font-size: 13px; color: var(--text3); margin-top: 2px; }
+
+/* Dashboard stats */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
+.stat-value { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-label { font-size: 12px; color: var(--text3); margin-top: 4px; font-weight: 500; }
+
+/* Mode cards */
+.modes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.mode-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; cursor: pointer; transition: all .2s; position: relative; overflow: hidden; }
+.mode-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); border-color: var(--primary); }
+.mode-card .mode-icon { font-size: 32px; margin-bottom: 12px; }
+.mode-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.mode-card p { font-size: 13px; color: var(--text3); line-height: 1.5; }
+.mode-card .mode-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 8px; }
+
+/* Practice area */
+.practice-area { display: none; }
+.practice-area.active { display: block; }
+.practice-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.practice-progress { display: flex; align-items: center; gap: 12px; }
+.progress-bar { width: 200px; height: 8px; background: var(--bg4); border-radius: 4px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width .3s; border-radius: 4px; }
+.progress-text { font-size: 13px; color: var(--text3); font-weight: 600; }
+.lives { display: flex; gap: 4px; }
+.life { font-size: 18px; transition: opacity .3s; }
+.life.lost { opacity: 0.2; }
+
+.word-card { background: var(--bg2); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 32px; text-align: center; margin-bottom: 20px; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: border-color .3s; }
+.word-card.correct { border-color: var(--success); background: var(--success-light); }
+.word-card.wrong { border-color: var(--danger); background: var(--danger-light); }
+.word-category-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; margin-bottom: 12px; }
+.word-definition { font-size: 16px; color: var(--text2); margin-bottom: 16px; line-height: 1.6; max-width: 500px; }
+.word-sentence { font-size: 14px; color: var(--text3); font-style: italic; margin-bottom: 16px; max-width: 500px; }
+.word-difficulty { display: flex; gap: 4px; margin-bottom: 12px; }
+.word-difficulty .star { color: var(--warning); font-size: 14px; }
+.word-difficulty .star.empty { color: var(--bg4); }
+
+.input-area { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.spell-input { font-family: var(--mono); font-size: 20px; padding: 12px 20px; border: 2px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--text); text-align: center; width: 320px; max-width: 100%; outline: none; transition: border-color .2s; }
+.spell-input:focus { border-color: var(--primary); }
+.spell-input.correct { border-color: var(--success); background: var(--success-light); }
+.spell-input.wrong { border-color: var(--danger); background: var(--danger-light); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border: none; border-radius: var(--radius-sm); font-family: var(--font); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-secondary { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--bg4); }
+.btn-success { background: var(--success); color: white; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn-lg { padding: 14px 28px; font-size: 16px; }
+.btn-icon { background: none; border: none; cursor: pointer; color: var(--text3); font-size: 18px; padding: 6px; border-radius: 6px; transition: all .15s; }
+.btn-icon:hover { background: var(--bg3); color: var(--text); }
+
+.listen-btn { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; transition: all .2s; margin-bottom: 16px; box-shadow: 0 4px 16px rgba(59,130,246,0.3); }
+.listen-btn:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(59,130,246,0.4); }
+.listen-btn:active { transform: scale(0.95); }
+.listen-btn.speaking { animation: pulse 1s infinite; }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); } 50% { box-shadow: 0 0 0 16px rgba(59,130,246,0); } }
+
+.feedback { margin-top: 16px; padding: 12px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; display: none; }
+.feedback.show { display: block; animation: fadeIn .3s; }
+.feedback.correct { background: var(--success-light); color: #065f46; border: 1px solid var(--success); }
+.feedback.wrong { background: var(--danger-light); color: #991b1b; border: 1px solid var(--danger); }
+.feedback .mnemonic { margin-top: 8px; font-size: 13px; font-style: italic; opacity: 0.8; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes confetti-fall { 0% { transform: translateY(-100px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+.confetti-piece { position: fixed; top: -20px; width: 10px; height: 10px; z-index: 9999; animation: confetti-fall 3s ease-in forwards; }
+
+/* Report */
+.report-container { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.report-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.report-content { padding: 24px; }
+.report-text { font-family: var(--mono); font-size: 12px; line-height: 1.7; white-space: pre-wrap; background: var(--bg); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--border); color: var(--text2); max-height: 600px; overflow-y: auto; }
+.copy-toast { position: fixed; bottom: 20px; right: 20px; background: var(--success); color: white; padding: 12px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; display: none; z-index: 999; animation: fadeIn .3s; }
+
+/* Achievements */
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.achievement { padding: 16px; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; opacity: 0.4; transition: all .3s; }
+.achievement.earned { opacity: 1; background: var(--bg2); border-color: var(--warning); box-shadow: 0 0 12px rgba(245,158,11,0.1); }
+.achievement .ach-icon { font-size: 32px; margin-bottom: 8px; }
+.achievement .ach-name { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.achievement .ach-desc { font-size: 11px; color: var(--text3); }
+
+/* Category selector */
+.cat-selector { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.cat-chip { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--bg); color: var(--text3); transition: all .2s; }
+.cat-chip:hover { background: var(--bg3); }
+.cat-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* Quick fix mode */
+.misspelled-word { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--danger); margin-bottom: 16px; letter-spacing: 2px; }
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  :root { --sidebar-w: 240px; }
+  .content { padding: 20px; }
+  .modes-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .hamburger { display: block; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-card { padding: 12px 8px; }
+  .stat-value { font-size: 22px; }
+  .stat-label { font-size: 11px; }
+  .modes-grid { grid-template-columns: 1fr; gap: 12px; }
+  .mode-card { padding: 16px; }
+  .mode-card .mode-icon { font-size: 26px; margin-bottom: 8px; }
+  .mode-card h3 { font-size: 15px; }
+  .mode-card p { font-size: 12px; }
+  .content { padding: 14px; }
+  .card { padding: 16px; margin-bottom: 14px; }
+  .card-title { font-size: 16px; }
+  .spell-input { width: 100%; font-size: 18px; padding: 10px 14px; }
+  .progress-bar { width: 100px; }
+  .progress-text { font-size: 12px; }
+  .word-card { padding: 20px 14px; min-height: 160px; }
+  .word-definition { font-size: 15px; }
+  .word-sentence { font-size: 13px; }
+  .word-reveal { font-size: 20px; }
+  .misspelled-word { font-size: 22px; }
+  .sentence-display { font-size: 16px; }
+  .input-area { flex-direction: column; width: 100%; }
+  .input-area .btn { width: 100%; justify-content: center; }
+  .listen-btn { width: 56px; height: 56px; font-size: 24px; }
+  .practice-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .practice-progress { width: 100%; }
+  .progress-bar { flex: 1; }
+  .topbar { padding: 10px 14px; }
+  .topbar h2 { font-size: 14px; }
+  .daily-goal { font-size: 11px; }
+  .theme-toggle { padding: 5px 10px; font-size: 12px; }
+  .cat-selector { gap: 6px; }
+  .cat-chip { padding: 5px 10px; font-size: 11px; }
+  .report-text { font-size: 11px; padding: 14px; max-height: 500px; }
+  .report-header { padding: 14px; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .achievements-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .achievement { padding: 12px; }
+  .achievement .ach-icon { font-size: 26px; }
+  .achievement .ach-name { font-size: 12px; }
+  .achievement .ach-desc { font-size: 10px; }
+  .homophone-pair { gap: 10px; }
+  .homophone-option { padding: 10px 18px; font-size: 14px; }
+  .settings-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .feedback { font-size: 13px; padding: 10px 14px; }
+  .back-btn { font-size: 12px; }
+  .btn { padding: 8px 16px; font-size: 13px; }
+  .btn-lg { padding: 12px 22px; font-size: 15px; }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 400px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-value { font-size: 18px; }
+  .content { padding: 10px; }
+  .card { padding: 12px; border-radius: var(--radius); }
+  .topbar-right { gap: 6px; }
+  .daily-goal { display: none; }
+  .spell-input { font-size: 16px; padding: 10px; }
+  .word-card { padding: 16px 10px; }
+  .word-definition { font-size: 14px; }
+  .misspelled-word { font-size: 20px; }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+  .modes-grid { gap: 10px; }
+  .report-text { font-size: 10px; }
+}
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.overlay.open { display: block; }
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .nav-item { padding: 10px 12px; min-height: 44px; }
+  .btn { min-height: 44px; }
+  .cat-chip { min-height: 36px; display: inline-flex; align-items: center; }
+  .homophone-option { min-height: 48px; }
+  .mode-card { padding: 18px; }
+  .theme-toggle { min-height: 36px; }
+  .spell-input { min-height: 48px; font-size: 16px; /* prevents iOS zoom */ }
+  .listen-btn { width: 64px; height: 64px; }
+}
+
+/* Settings panel */
+.settings-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.settings-row:last-child { border: none; }
+.settings-label { font-size: 14px; font-weight: 500; }
+.settings-label small { display: block; font-size: 11px; color: var(--text3); font-weight: 400; }
+select, .toggle-switch { font-family: var(--font); }
+select { padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text); font-size: 13px; }
+
+.gap-word { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--primary); margin: 0 4px; }
+.sentence-display { font-size: 18px; line-height: 2; color: var(--text); margin-bottom: 16px; }
+
+/* Homophone mode special */
+.homophone-pair { display: flex; gap: 16px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+.homophone-option { padding: 12px 24px; border: 2px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 16px; font-weight: 600; transition: all .2s; background: var(--bg); }
+.homophone-option:hover { border-color: var(--primary); background: var(--primary-light); }
+
+.back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text3); cursor: pointer; margin-bottom: 16px; padding: 6px 0; }
+.back-btn:hover { color: var(--text); }
+
+.word-reveal { font-family: var(--mono); font-size: 24px; font-weight: 700; letter-spacing: 2px; margin: 8px 0; }
+.word-reveal.correct-reveal { color: var(--success); }
+.word-reveal.wrong-reveal { color: var(--danger); text-decoration: line-through; }
+</style>
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h1>IELTS Spelling Master</h1>
+    <p>Master your vocabulary</p>
+  </div>
+  <div class="sidebar-nav" id="sidebarNav"></div>
+  <div class="sidebar-footer">
+    <div class="xp-bar-wrap">
+      <div class="xp-label"><span id="levelLabel">Level 1</span><span id="xpLabel">0 / 100 XP</span></div>
+      <div class="xp-bar"><div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div></div>
+    </div>
+    <div class="streak-info" id="streakInfo">Current streak: 0 days</div>
+  </div>
+</div>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- Main -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+      <h2 id="pageTitle">Dashboard</h2>
+    </div>
+    <div class="topbar-right">
+      <div class="daily-goal">Today: <span class="count" id="dailyCount">0</span> / <span id="dailyGoalNum">20</span></div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">&#9789; Dark</button>
+    </div>
+  </div>
+  <div class="content" id="contentArea"></div>
+</div>
+<div class="copy-toast" id="copyToast">Report copied to clipboard!</div>
+
+<script>
+// ===================== WORD DATABASE =====================
+const WORDS = [
+// LISTENING - Commercial & Retail
+{w:"convenience",def:"A store open long hours for quick purchases",ex:"The ___ store is open 24 hours.",d:1,cat:"Listening: Commercial"},
+{w:"department",def:"A section of a large store",ex:"She works in the clothing ___.",d:1,cat:"Listening: Commercial"},
+{w:"supermarket",def:"A large self-service store selling food and household goods",ex:"We buy groceries at the ___.",d:1,cat:"Listening: Commercial"},
+{w:"receipt",def:"A written acknowledgement of payment",ex:"Please keep your ___ for returns.",d:2,cat:"Listening: Commercial"},
+{w:"outlet",def:"A shop that sells goods at reduced prices",ex:"The factory ___ has great deals.",d:1,cat:"Listening: Commercial"},
+{w:"grocery",def:"A store selling food and small household items",ex:"I need to pick up items from the ___ store.",d:1,cat:"Listening: Commercial"},
+{w:"stationery",def:"Writing materials such as paper and pens",ex:"She bought new ___ for the office.",d:2,cat:"Listening: Commercial"},
+{w:"luxurious",def:"Extremely comfortable and elegant",ex:"The hotel suite was very ___.",d:2,cat:"Listening: Commercial"},
+{w:"electronic",def:"Relating to devices using electric circuits",ex:"The ___ gadgets are on the third floor.",d:1,cat:"Listening: Commercial"},
+{w:"accommodation",def:"A place to live or stay",ex:"Finding ___ in the city is expensive.",d:3,cat:"Listening: Commercial"},
+{w:"restaurant",def:"A place where meals are served to customers",ex:"We had dinner at an Italian ___.",d:2,cat:"Listening: Commercial"},
+{w:"cafeteria",def:"A self-service dining area",ex:"The university ___ serves lunch daily.",d:2,cat:"Listening: Commercial"},
+{w:"gymnasium",def:"A room or building for indoor sports",ex:"Students exercise in the school ___.",d:2,cat:"Listening: Commercial"},
+{w:"parliament",def:"A legislative body of government",ex:"The bill was debated in ___.",d:2,cat:"Listening: Commercial"},
+{w:"kindergarten",def:"A school for young children",ex:"My daughter starts ___ next year.",d:2,cat:"Listening: Commercial"},
+{w:"advertisement",def:"A public promotion of a product or service",ex:"The ___ appeared on television last night.",d:2,cat:"Listening: Commercial"},
+{w:"guarantee",def:"A formal promise of quality or durability",ex:"The product comes with a five-year ___.",d:2,cat:"Listening: Commercial"},
+{w:"catalogue",def:"A complete list of items for sale",ex:"Browse our ___ for the latest products.",d:2,cat:"Listening: Commercial"},
+{w:"wholesale",def:"Selling goods in large quantities at lower prices",ex:"They buy products at ___ prices.",d:1,cat:"Listening: Commercial"},
+{w:"merchandise",def:"Goods for sale",ex:"The ___ was displayed attractively.",d:2,cat:"Listening: Commercial"},
+
+// LISTENING - Domestic & Facilities
+{w:"furnace",def:"An enclosed structure for intense heating",ex:"The ___ heats the entire building.",d:2,cat:"Listening: Domestic"},
+{w:"appliance",def:"A device designed for household use",ex:"The kitchen ___ needs repair.",d:1,cat:"Listening: Domestic"},
+{w:"maintenance",def:"The process of keeping something in good condition",ex:"Regular ___ extends the life of equipment.",d:2,cat:"Listening: Domestic"},
+{w:"plumbing",def:"The system of pipes in a building",ex:"The ___ in the old house needs updating.",d:2,cat:"Listening: Domestic"},
+{w:"renovation",def:"Restoring something to good condition",ex:"The house ___ took six months.",d:2,cat:"Listening: Domestic"},
+{w:"insulation",def:"Material used to prevent heat loss",ex:"Good ___ reduces energy bills.",d:2,cat:"Listening: Domestic"},
+{w:"ventilation",def:"The provision of fresh air to a room",ex:"Proper ___ is essential in kitchens.",d:2,cat:"Listening: Domestic"},
+{w:"thermostat",def:"A device that regulates temperature",ex:"Set the ___ to 22 degrees.",d:2,cat:"Listening: Domestic"},
+{w:"detergent",def:"A cleaning substance",ex:"Use mild ___ for delicate fabrics.",d:2,cat:"Listening: Domestic"},
+{w:"upholstery",def:"Soft covering on furniture",ex:"The ___ on the sofa is worn.",d:3,cat:"Listening: Domestic"},
+{w:"wardrobe",def:"A large cupboard for clothes",ex:"She organized her entire ___.",d:1,cat:"Listening: Domestic"},
+{w:"corridor",def:"A long passage in a building",ex:"Walk down the ___ to the last room.",d:2,cat:"Listening: Domestic"},
+{w:"ceiling",def:"The upper surface of a room",ex:"The ___ was painted white.",d:2,cat:"Listening: Domestic"},
+{w:"curtain",def:"A piece of fabric hung to cover a window",ex:"Draw the ___ to block the sunlight.",d:1,cat:"Listening: Domestic"},
+{w:"refrigerator",def:"An appliance for keeping food cold",ex:"Put the milk in the ___.",d:2,cat:"Listening: Domestic"},
+
+// LISTENING - Materials & Manufacturing
+{w:"aluminium",def:"A lightweight silvery metal",ex:"The frame is made of ___.",d:2,cat:"Listening: Materials"},
+{w:"copper",def:"A reddish-brown metallic element",ex:"___ wires conduct electricity well.",d:1,cat:"Listening: Materials"},
+{w:"ceramics",def:"Objects made from clay hardened by heat",ex:"The museum displayed ancient ___.",d:2,cat:"Listening: Materials"},
+{w:"cement",def:"A building material that hardens when mixed with water",ex:"The workers poured fresh ___.",d:1,cat:"Listening: Materials"},
+{w:"fibreglass",def:"A material made from fine glass fibers",ex:"The boat hull is made of ___.",d:2,cat:"Listening: Materials"},
+{w:"titanium",def:"A strong lightweight metallic element",ex:"The aircraft uses ___ alloys.",d:2,cat:"Listening: Materials"},
+{w:"platinum",def:"A precious silvery-white metal",ex:"The ring was made of pure ___.",d:2,cat:"Listening: Materials"},
+{w:"rubber",def:"An elastic material from tropical plants",ex:"___ gloves protect your hands.",d:1,cat:"Listening: Materials"},
+{w:"concrete",def:"A building material of cement, sand, and gravel",ex:"The ___ foundation was poured yesterday.",d:1,cat:"Listening: Materials"},
+{w:"textile",def:"A type of cloth or woven fabric",ex:"The ___ industry employs thousands.",d:2,cat:"Listening: Materials"},
+{w:"composite",def:"Made of various parts or elements",ex:"___ materials are used in aerospace.",d:2,cat:"Listening: Materials"},
+{w:"leather",def:"Material made from animal skin",ex:"He wore a ___ jacket.",d:1,cat:"Listening: Materials"},
+{w:"polyester",def:"A synthetic fabric",ex:"The shirt is made of ___.",d:2,cat:"Listening: Materials"},
+{w:"mahogany",def:"A reddish-brown tropical hardwood",ex:"The table is crafted from ___.",d:3,cat:"Listening: Materials"},
+{w:"stainless",def:"Resistant to rust and corrosion",ex:"___ steel is used in kitchens.",d:1,cat:"Listening: Materials"},
+{w:"porcelain",def:"A white ceramic material",ex:"The ___ vase was very delicate.",d:2,cat:"Listening: Materials"},
+
+// LISTENING - Health & Nutrition
+{w:"protein",def:"Nutrient essential for body growth and repair",ex:"Eggs are a good source of ___.",d:1,cat:"Listening: Health"},
+{w:"carbohydrates",def:"Sugars and starches providing energy",ex:"Bread is rich in ___.",d:2,cat:"Listening: Health"},
+{w:"vitamins",def:"Organic compounds essential for health",ex:"Fruits contain many ___.",d:1,cat:"Listening: Health"},
+{w:"minerals",def:"Inorganic nutrients needed by the body",ex:"Leafy greens are rich in ___.",d:1,cat:"Listening: Health"},
+{w:"cereals",def:"Grains used for food",ex:"She eats ___ for breakfast.",d:1,cat:"Listening: Health"},
+{w:"yoghurt",def:"A semi-solid food from fermented milk",ex:"Greek ___ is high in protein.",d:2,cat:"Listening: Health"},
+{w:"vegetarian",def:"A person who does not eat meat",ex:"The restaurant has ___ options.",d:2,cat:"Listening: Health"},
+{w:"citrus",def:"A group of acidic fruits like oranges and lemons",ex:"___ fruits are rich in vitamin C.",d:2,cat:"Listening: Health"},
+{w:"Mediterranean",def:"Relating to the region around the Mediterranean Sea",ex:"The ___ diet is considered very healthy.",d:3,cat:"Listening: Health"},
+{w:"nutrition",def:"The process of providing food for health",ex:"Good ___ is vital for children.",d:2,cat:"Listening: Health"},
+{w:"cholesterol",def:"A fatty substance in blood",ex:"High ___ increases heart disease risk.",d:3,cat:"Listening: Health"},
+{w:"calcium",def:"A mineral important for bones and teeth",ex:"Milk is a good source of ___.",d:2,cat:"Listening: Health"},
+{w:"antibiotic",def:"Medicine that destroys bacteria",ex:"The doctor prescribed an ___.",d:2,cat:"Listening: Health"},
+{w:"prescription",def:"A doctor's written order for medicine",ex:"You need a ___ for this medication.",d:2,cat:"Listening: Health"},
+{w:"diagnosis",def:"Identification of an illness",ex:"The ___ confirmed a minor infection.",d:2,cat:"Listening: Health"},
+{w:"symptom",def:"A sign indicating a disease or condition",ex:"Fever is a common ___ of flu.",d:1,cat:"Listening: Health"},
+{w:"pharmaceutical",def:"Relating to medicinal drugs",ex:"The ___ company developed a new vaccine.",d:3,cat:"Listening: Health"},
+
+// LISTENING - Travel & Transport
+{w:"ferry",def:"A boat for transporting passengers",ex:"We took the ___ across the river.",d:1,cat:"Listening: Travel"},
+{w:"hovercraft",def:"A vehicle that travels over water on a cushion of air",ex:"The ___ crossed the English Channel.",d:2,cat:"Listening: Travel"},
+{w:"hydrofoil",def:"A boat with wing-like structures that lifts above water",ex:"The ___ reached the island quickly.",d:3,cat:"Listening: Travel"},
+{w:"gondola",def:"A flat-bottomed boat used in Venice",ex:"We rode a ___ through the canals.",d:2,cat:"Listening: Travel"},
+{w:"helicopter",def:"An aircraft with rotating blades on top",ex:"The ___ landed on the hospital roof.",d:2,cat:"Listening: Travel"},
+{w:"seaplane",def:"An aircraft designed to land on water",ex:"The ___ took off from the lake.",d:2,cat:"Listening: Travel"},
+{w:"aquarium",def:"A tank for keeping fish and aquatic animals",ex:"The ___ has a shark exhibit.",d:2,cat:"Listening: Travel"},
+{w:"souvenir",def:"An item kept as a reminder of a place",ex:"She bought a ___ from Paris.",d:2,cat:"Listening: Travel"},
+{w:"itinerary",def:"A planned route or schedule of travel",ex:"The ___ includes three countries.",d:3,cat:"Listening: Travel"},
+{w:"passenger",def:"A traveler in a vehicle who is not driving",ex:"The ___ boarded the train.",d:1,cat:"Listening: Travel"},
+{w:"chauffeur",def:"A person employed to drive a private car",ex:"The ___ opened the door for them.",d:3,cat:"Listening: Travel"},
+{w:"excursion",def:"A short trip for pleasure",ex:"The ___ to the mountains was exciting.",d:2,cat:"Listening: Travel"},
+{w:"luggage",def:"Bags and suitcases for traveling",ex:"Please collect your ___ at the carousel.",d:1,cat:"Listening: Travel"},
+{w:"departure",def:"The act of leaving a place",ex:"The ___ time is 8 AM.",d:1,cat:"Listening: Travel"},
+{w:"destination",def:"The place to which someone is going",ex:"Our final ___ is Tokyo.",d:1,cat:"Listening: Travel"},
+{w:"turbulence",def:"Irregular movement of air affecting aircraft",ex:"The plane experienced severe ___.",d:2,cat:"Listening: Travel"},
+
+// ORTHOGRAPHIC TRAPS - Consonant Doubling
+{w:"accommodation",def:"A place to live or stay",ex:"Finding ___ in the city is expensive.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"millennium",def:"A period of one thousand years",ex:"The new ___ began in 2000.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"questionnaire",def:"A set of printed questions for a survey",ex:"Please fill in the ___.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"occurrence",def:"An incident or event",ex:"This is a rare ___.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"recommend",def:"To suggest as good or suitable",ex:"I ___ this book highly.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"necessary",def:"Required or essential",ex:"Water is ___ for survival.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"success",def:"The achievement of a goal",ex:"Hard work leads to ___.",d:1,cat:"Traps: Consonant Doubling"},
+{w:"possess",def:"To have or own",ex:"Few people ___ such talent.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"embarrassment",def:"A feeling of self-consciousness or shame",ex:"His mistake caused great ___.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"referring",def:"Mentioning or directing attention to",ex:"She was ___ to the previous study.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"Philippines",def:"An island country in Southeast Asia",ex:"The ___ consists of over 7000 islands.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"committee",def:"A group appointed for a specific function",ex:"The ___ meets every Monday.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"profession",def:"A paid occupation requiring training",ex:"Teaching is a noble ___.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"aggressive",def:"Hostile or violent in behavior",ex:"The dog became ___.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"exaggerate",def:"To represent as larger than reality",ex:"Do not ___ the problem.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"broccoli",def:"A green vegetable with dense clusters",ex:"Steamed ___ is very nutritious.",d:2,cat:"Traps: Consonant Doubling"},
+{w:"cappuccino",def:"An espresso coffee with steamed milk foam",ex:"I ordered a ___ at the cafe.",d:3,cat:"Traps: Consonant Doubling"},
+{w:"accountant",def:"A person who manages financial accounts",ex:"The ___ filed the tax returns.",d:2,cat:"Traps: Consonant Doubling"},
+
+// ORTHOGRAPHIC TRAPS - Silent Letters
+{w:"Wednesday",def:"The day after Tuesday",ex:"The meeting is on ___.",d:2,cat:"Traps: Silent Letters"},
+{w:"February",def:"The second month of the year",ex:"Valentine's Day is in ___.",d:2,cat:"Traps: Silent Letters"},
+{w:"environment",def:"The surroundings or conditions in which one lives",ex:"Protecting the ___ is crucial.",d:2,cat:"Traps: Silent Letters"},
+{w:"government",def:"The governing body of a nation",ex:"The ___ announced new policies.",d:2,cat:"Traps: Silent Letters"},
+{w:"knowledge",def:"Information and understanding gained through experience",ex:"___ is power.",d:1,cat:"Traps: Silent Letters"},
+{w:"sculpture",def:"A three-dimensional work of art",ex:"The marble ___ was breathtaking.",d:2,cat:"Traps: Silent Letters"},
+{w:"psychology",def:"The study of the mind and behavior",ex:"She studied ___ at university.",d:2,cat:"Traps: Silent Letters"},
+{w:"psychiatry",def:"The medical treatment of mental illness",ex:"He specialized in child ___.",d:3,cat:"Traps: Silent Letters"},
+{w:"pneumonia",def:"A lung infection causing breathing difficulty",ex:"She was hospitalized with ___.",d:3,cat:"Traps: Silent Letters"},
+{w:"rhythm",def:"A strong regular repeated pattern",ex:"The music had an infectious ___.",d:2,cat:"Traps: Silent Letters"},
+{w:"conscience",def:"An inner sense of right and wrong",ex:"His ___ would not let him lie.",d:2,cat:"Traps: Silent Letters"},
+{w:"fascinate",def:"To attract and hold attention",ex:"The documentary will ___ viewers.",d:2,cat:"Traps: Silent Letters"},
+{w:"mortgage",def:"A loan for buying property",ex:"They applied for a ___.",d:2,cat:"Traps: Silent Letters"},
+{w:"receipt",def:"Proof of payment received",ex:"Keep the ___ for your records.",d:2,cat:"Traps: Silent Letters"},
+{w:"subtle",def:"Delicate or understated",ex:"There was a ___ difference in taste.",d:2,cat:"Traps: Silent Letters"},
+{w:"island",def:"A piece of land surrounded by water",ex:"They visited a tropical ___.",d:1,cat:"Traps: Silent Letters"},
+{w:"column",def:"A vertical pillar or section",ex:"The newspaper ___ was insightful.",d:2,cat:"Traps: Silent Letters"},
+{w:"doubt",def:"A feeling of uncertainty",ex:"There is no ___ about her talent.",d:1,cat:"Traps: Silent Letters"},
+
+// ORTHOGRAPHIC TRAPS - ei/ie Confusion
+{w:"believe",def:"To accept as true",ex:"I ___ in hard work.",d:1,cat:"Traps: ei/ie"},
+{w:"achieve",def:"To successfully reach a goal",ex:"She worked hard to ___ her dream.",d:1,cat:"Traps: ei/ie"},
+{w:"receive",def:"To be given or presented with",ex:"Did you ___ my email?",d:1,cat:"Traps: ei/ie"},
+{w:"perceive",def:"To become aware of through the senses",ex:"How do others ___ your work?",d:2,cat:"Traps: ei/ie"},
+{w:"ceiling",def:"The upper surface of a room",ex:"The ___ was very high.",d:2,cat:"Traps: ei/ie"},
+{w:"conceive",def:"To form an idea or plan",ex:"She could not ___ of a better solution.",d:2,cat:"Traps: ei/ie"},
+{w:"hygiene",def:"Conditions or practices for health preservation",ex:"Personal ___ is important.",d:2,cat:"Traps: ei/ie"},
+{w:"species",def:"A group of similar organisms",ex:"This ___ is found only in Australia.",d:2,cat:"Traps: ei/ie"},
+{w:"ancient",def:"Belonging to the very distant past",ex:"The ___ ruins attracted tourists.",d:1,cat:"Traps: ei/ie"},
+{w:"caffeine",def:"A stimulant found in coffee and tea",ex:"Too much ___ can cause insomnia.",d:2,cat:"Traps: ei/ie"},
+{w:"height",def:"The measurement from base to top",ex:"The ___ of the building is 50 meters.",d:1,cat:"Traps: ei/ie"},
+{w:"experience",def:"Practical contact with events or people",ex:"She has years of ___ in teaching.",d:1,cat:"Traps: ei/ie"},
+{w:"sufficient",def:"Enough to meet a need",ex:"There is ___ evidence to proceed.",d:2,cat:"Traps: ei/ie"},
+{w:"foreign",def:"Relating to another country",ex:"She speaks three ___ languages.",d:2,cat:"Traps: ei/ie"},
+{w:"weird",def:"Strange or unusual",ex:"That was a ___ coincidence.",d:1,cat:"Traps: ei/ie"},
+{w:"seize",def:"To take hold of suddenly",ex:"The police will ___ the evidence.",d:2,cat:"Traps: ei/ie"},
+{w:"leisure",def:"Free time for enjoyment",ex:"She reads during her ___ time.",d:2,cat:"Traps: ei/ie"},
+
+// ORTHOGRAPHIC TRAPS - Morphological Shifts
+{w:"pronunciation",def:"The way a word is spoken",ex:"The ___ of this word is tricky.",d:2,cat:"Traps: Morphological"},
+{w:"argument",def:"A reason or set of reasons given",ex:"They had a heated ___.",d:1,cat:"Traps: Morphological"},
+{w:"maintenance",def:"The process of preserving or keeping in good condition",ex:"Regular ___ prevents breakdowns.",d:2,cat:"Traps: Morphological"},
+{w:"occurrence",def:"Something that happens or takes place",ex:"A strange ___ happened last night.",d:3,cat:"Traps: Morphological"},
+{w:"curiosity",def:"A strong desire to know something",ex:"Her ___ led her to explore further.",d:2,cat:"Traps: Morphological"},
+{w:"explanation",def:"A statement that makes something clear",ex:"The teacher gave a clear ___.",d:2,cat:"Traps: Morphological"},
+{w:"repetition",def:"The action of repeating something",ex:"___ helps improve memory.",d:2,cat:"Traps: Morphological"},
+{w:"description",def:"A spoken or written account of something",ex:"The ___ matched the suspect.",d:1,cat:"Traps: Morphological"},
+{w:"exclamation",def:"A sudden cry expressing emotion",ex:"An ___ of surprise escaped her.",d:2,cat:"Traps: Morphological"},
+{w:"imagination",def:"The ability to form mental images",ex:"Children have vivid ___.",d:2,cat:"Traps: Morphological"},
+{w:"determination",def:"Firmness of purpose",ex:"Her ___ to succeed was admirable.",d:2,cat:"Traps: Morphological"},
+{w:"preparation",def:"The action of making ready",ex:"Exam ___ requires discipline.",d:1,cat:"Traps: Morphological"},
+{w:"administration",def:"The management of public or business affairs",ex:"The university ___ made the decision.",d:2,cat:"Traps: Morphological"},
+{w:"assumption",def:"A thing accepted as true without proof",ex:"That is a dangerous ___.",d:2,cat:"Traps: Morphological"},
+{w:"acquisition",def:"The act of obtaining something",ex:"The ___ of the company was finalized.",d:3,cat:"Traps: Morphological"},
+
+// ORTHOGRAPHIC TRAPS - Homophones
+{w:"accept",def:"To receive willingly (vs. except)",ex:"Please ___ my apology.",d:1,cat:"Traps: Homophones"},
+{w:"except",def:"Not including (vs. accept)",ex:"Everyone came ___ John.",d:1,cat:"Traps: Homophones"},
+{w:"stationary",def:"Not moving (vs. stationery)",ex:"The car remained ___.",d:2,cat:"Traps: Homophones"},
+{w:"principal",def:"The head of a school; most important (vs. principle)",ex:"The ___ addressed the students.",d:2,cat:"Traps: Homophones"},
+{w:"principle",def:"A fundamental truth or rule (vs. principal)",ex:"She acted on ___.",d:2,cat:"Traps: Homophones"},
+{w:"affect",def:"To influence or have an impact on (vs. effect)",ex:"Stress can ___ your health.",d:2,cat:"Traps: Homophones"},
+{w:"effect",def:"A result or outcome (vs. affect)",ex:"The ___ of the drug was immediate.",d:2,cat:"Traps: Homophones"},
+{w:"complement",def:"Something that completes (vs. compliment)",ex:"Red wine is a good ___ to steak.",d:2,cat:"Traps: Homophones"},
+{w:"compliment",def:"An expression of praise (vs. complement)",ex:"She gave him a nice ___.",d:2,cat:"Traps: Homophones"},
+{w:"discrete",def:"Individually separate (vs. discreet)",ex:"The data was divided into ___ units.",d:3,cat:"Traps: Homophones"},
+{w:"discreet",def:"Careful and prudent (vs. discrete)",ex:"Please be ___ about this matter.",d:3,cat:"Traps: Homophones"},
+{w:"council",def:"An advisory body (vs. counsel)",ex:"The city ___ met on Thursday.",d:2,cat:"Traps: Homophones"},
+{w:"counsel",def:"Advice or guidance (vs. council)",ex:"She sought legal ___.",d:2,cat:"Traps: Homophones"},
+{w:"whether",def:"Expressing a doubt or choice (vs. weather)",ex:"I wonder ___ he will come.",d:1,cat:"Traps: Homophones"},
+{w:"lose",def:"To be deprived of (vs. loose)",ex:"Do not ___ your keys.",d:1,cat:"Traps: Homophones"},
+{w:"practise",def:"To perform an activity repeatedly (British verb vs. practice noun)",ex:"You must ___ every day.",d:2,cat:"Traps: Homophones"},
+
+// AWL Sublists 1-2 (Foundation)
+{w:"analysis",def:"Detailed examination of elements or structure",ex:"The data ___ revealed trends.",d:2,cat:"AWL: Foundation"},
+{w:"assessment",def:"The evaluation or estimation of something",ex:"The ___ was thorough.",d:2,cat:"AWL: Foundation"},
+{w:"constitutional",def:"Relating to the constitution of a body or state",ex:"They filed a ___ challenge.",d:3,cat:"AWL: Foundation"},
+{w:"distribution",def:"The action of sharing out",ex:"The ___ of wealth is unequal.",d:2,cat:"AWL: Foundation"},
+{w:"interpretation",def:"The action of explaining the meaning",ex:"Her ___ of the data was insightful.",d:2,cat:"AWL: Foundation"},
+{w:"legislation",def:"Laws collectively",ex:"New ___ was introduced.",d:2,cat:"AWL: Foundation"},
+{w:"significant",def:"Sufficiently great or important",ex:"There was a ___ improvement.",d:2,cat:"AWL: Foundation"},
+{w:"acquisition",def:"The act of acquiring something",ex:"Language ___ begins in infancy.",d:3,cat:"AWL: Foundation"},
+{w:"administration",def:"The management of affairs",ex:"The ___ handled the crisis well.",d:2,cat:"AWL: Foundation"},
+{w:"consequences",def:"Results or effects of an action",ex:"Consider the ___ of your decision.",d:2,cat:"AWL: Foundation"},
+{w:"construction",def:"The building of something",ex:"The ___ will take two years.",d:1,cat:"AWL: Foundation"},
+{w:"evaluation",def:"Making a judgement about value or quality",ex:"The ___ process is rigorous.",d:2,cat:"AWL: Foundation"},
+{w:"participation",def:"The action of taking part",ex:"___ in class is encouraged.",d:2,cat:"AWL: Foundation"},
+{w:"regulations",def:"Rules made by an authority",ex:"Safety ___ must be followed.",d:2,cat:"AWL: Foundation"},
+{w:"strategies",def:"Plans designed to achieve goals",ex:"Effective learning ___ improve results.",d:2,cat:"AWL: Foundation"},
+{w:"established",def:"Set up on a permanent basis",ex:"The company was ___ in 1990.",d:1,cat:"AWL: Foundation"},
+{w:"authority",def:"The power to give orders",ex:"The local ___ approved the plan.",d:1,cat:"AWL: Foundation"},
+{w:"available",def:"Able to be used or obtained",ex:"Is the manager ___?",d:1,cat:"AWL: Foundation"},
+{w:"percentage",def:"A rate expressed as a fraction of 100",ex:"A large ___ of students passed.",d:1,cat:"AWL: Foundation"},
+
+// AWL Sublists 3-5 (Structural)
+{w:"circumstance",def:"A condition connected with an event",ex:"Under no ___ should you leave.",d:2,cat:"AWL: Structural"},
+{w:"correspond",def:"To have a close similarity or match",ex:"The results ___ to predictions.",d:2,cat:"AWL: Structural"},
+{w:"demonstrate",def:"To clearly show the existence of",ex:"The experiment will ___ the theory.",d:2,cat:"AWL: Structural"},
+{w:"philosophy",def:"The study of fundamental nature of knowledge",ex:"She studied ___ at university.",d:2,cat:"AWL: Structural"},
+{w:"approximate",def:"Close to the actual but not exact",ex:"The ___ cost is five thousand.",d:2,cat:"AWL: Structural"},
+{w:"communication",def:"The exchange of information",ex:"Good ___ skills are essential.",d:2,cat:"AWL: Structural"},
+{w:"concentration",def:"The action of focusing attention",ex:"Deep ___ is needed for study.",d:2,cat:"AWL: Structural"},
+{w:"hypothesis",def:"A proposed explanation for a phenomenon",ex:"The ___ was tested experimentally.",d:3,cat:"AWL: Structural"},
+{w:"implementation",def:"The process of putting a plan into effect",ex:"___ of the policy began immediately.",d:3,cat:"AWL: Structural"},
+{w:"investigation",def:"A formal examination or study",ex:"The police launched an ___.",d:2,cat:"AWL: Structural"},
+{w:"statistics",def:"The science of collecting and analyzing numerical data",ex:"___ show a rise in employment.",d:2,cat:"AWL: Structural"},
+{w:"subsequent",def:"Coming after something in time",ex:"___ events proved him right.",d:2,cat:"AWL: Structural"},
+{w:"consultation",def:"The action of seeking advice",ex:"A ___ with a specialist was arranged.",d:2,cat:"AWL: Structural"},
+{w:"equivalent",def:"Equal in value or function",ex:"One dollar is ___ to 100 cents.",d:2,cat:"AWL: Structural"},
+{w:"fundamental",def:"Forming a necessary base or core",ex:"This is a ___ principle.",d:2,cat:"AWL: Structural"},
+{w:"psychology",def:"The scientific study of the mind",ex:"___ helps us understand behavior.",d:2,cat:"AWL: Structural"},
+{w:"sustainable",def:"Able to be maintained long-term",ex:"We need ___ energy sources.",d:2,cat:"AWL: Structural"},
+{w:"perspective",def:"A particular way of viewing things",ex:"Try to see it from my ___.",d:2,cat:"AWL: Structural"},
+{w:"orientation",def:"The direction or positioning of something",ex:"The ___ session is on Monday.",d:2,cat:"AWL: Structural"},
+{w:"documentation",def:"Written specifications or instructions",ex:"Read the ___ before installing.",d:2,cat:"AWL: Structural"},
+
+// AWL Sublists 6-10 (Advanced)
+{w:"acknowledge",def:"To accept or recognize the truth of",ex:"She refused to ___ the mistake.",d:2,cat:"AWL: Advanced"},
+{w:"aggregate",def:"A whole formed by combining elements",ex:"The ___ score determines ranking.",d:3,cat:"AWL: Advanced"},
+{w:"discrimination",def:"Unjust treatment based on category",ex:"Racial ___ is prohibited by law.",d:2,cat:"AWL: Advanced"},
+{w:"flexibility",def:"The quality of bending easily without breaking",ex:"The job offers great ___.",d:2,cat:"AWL: Advanced"},
+{w:"incorporate",def:"To include as part of a whole",ex:"We will ___ your feedback.",d:2,cat:"AWL: Advanced"},
+{w:"intelligence",def:"The ability to acquire and apply knowledge",ex:"Artificial ___ is transforming industries.",d:2,cat:"AWL: Advanced"},
+{w:"transformation",def:"A thorough change in form or appearance",ex:"The city underwent a dramatic ___.",d:2,cat:"AWL: Advanced"},
+{w:"comprehensive",def:"Including all elements or aspects",ex:"The report was very ___.",d:2,cat:"AWL: Advanced"},
+{w:"differentiation",def:"The process of distinguishing between things",ex:"Product ___ is key in marketing.",d:3,cat:"AWL: Advanced"},
+{w:"hierarchical",def:"Arranged in order of rank",ex:"The company has a ___ structure.",d:3,cat:"AWL: Advanced"},
+{w:"phenomenon",def:"A remarkable occurrence",ex:"The northern lights are a natural ___.",d:3,cat:"AWL: Advanced"},
+{w:"prohibition",def:"The action of forbidding something",ex:"The ___ of alcohol was controversial.",d:2,cat:"AWL: Advanced"},
+{w:"simulation",def:"Imitation of a situation or process",ex:"The flight ___ felt very real.",d:2,cat:"AWL: Advanced"},
+{w:"accumulation",def:"The gathering of things over time",ex:"The ___ of snow blocked roads.",d:2,cat:"AWL: Advanced"},
+{w:"ambiguous",def:"Open to more than one interpretation",ex:"The statement was ___.",d:2,cat:"AWL: Advanced"},
+{w:"contradiction",def:"A combination of statements that are opposed",ex:"There was a clear ___ in his story.",d:2,cat:"AWL: Advanced"},
+{w:"exploitation",def:"The utilization of resources or unfair treatment",ex:"___ of workers is unethical.",d:2,cat:"AWL: Advanced"},
+{w:"infrastructure",def:"Basic physical structures needed for operation",ex:"The country's ___ needs improvement.",d:2,cat:"AWL: Advanced"},
+{w:"bureaucracy",def:"A system of government with many rules",ex:"The ___ slowed down the process.",d:3,cat:"AWL: Advanced"},
+{w:"concurrent",def:"Existing or happening at the same time",ex:"The two events were ___.",d:3,cat:"AWL: Advanced"},
+{w:"coherent",def:"Logical and consistent",ex:"She presented a ___ argument.",d:2,cat:"AWL: Advanced"},
+{w:"notwithstanding",def:"In spite of; nevertheless",ex:"___ the rain, they continued.",d:3,cat:"AWL: Advanced"},
+{w:"straightforward",def:"Uncomplicated and easy to understand",ex:"The instructions were ___.",d:1,cat:"AWL: Advanced"},
+{w:"forthcoming",def:"About to happen or appear",ex:"Details of ___ events were shared.",d:2,cat:"AWL: Advanced"},
+{w:"reluctance",def:"Unwillingness or hesitation",ex:"He showed ___ to participate.",d:2,cat:"AWL: Advanced"},
+
+// WRITING TASK 1 - Trends
+{w:"dramatically",def:"In a striking or impressive manner",ex:"Sales increased ___.",d:2,cat:"Writing 1: Trends"},
+{w:"substantially",def:"To a great extent",ex:"Costs have risen ___.",d:2,cat:"Writing 1: Trends"},
+{w:"considerably",def:"By a notably large amount",ex:"The population grew ___.",d:2,cat:"Writing 1: Trends"},
+{w:"significantly",def:"In a sufficiently great way to be important",ex:"Results improved ___.",d:2,cat:"Writing 1: Trends"},
+{w:"progressively",def:"Steadily increasing over time",ex:"The situation ___ worsened.",d:2,cat:"Writing 1: Trends"},
+{w:"marginally",def:"To a small extent",ex:"Profits increased only ___.",d:2,cat:"Writing 1: Trends"},
+{w:"fluctuate",def:"To rise and fall irregularly",ex:"Prices tend to ___ seasonally.",d:2,cat:"Writing 1: Trends"},
+{w:"plateau",def:"To reach a state of little change after increase",ex:"Growth began to ___ in 2015.",d:2,cat:"Writing 1: Trends"},
+{w:"deteriorate",def:"To become progressively worse",ex:"Conditions continued to ___.",d:2,cat:"Writing 1: Trends"},
+{w:"plummet",def:"To fall steeply or rapidly",ex:"Share prices began to ___.",d:2,cat:"Writing 1: Trends"},
+{w:"steadily",def:"In a regular and even manner",ex:"Exports grew ___ over the decade.",d:1,cat:"Writing 1: Trends"},
+{w:"gradually",def:"In a slow and steady way",ex:"Temperatures ___ increased.",d:1,cat:"Writing 1: Trends"},
+{w:"accelerate",def:"To increase in speed or rate",ex:"Economic growth began to ___.",d:2,cat:"Writing 1: Trends"},
+{w:"stagnate",def:"To cease developing or progressing",ex:"The economy began to ___.",d:2,cat:"Writing 1: Trends"},
+{w:"overwhelmingly",def:"To a very great degree",ex:"The response was ___ positive.",d:2,cat:"Writing 1: Trends"},
+
+// WRITING TASK 1 - Proportional
+{w:"approximately",def:"Close to an exact amount",ex:"___ 60% of people agreed.",d:2,cat:"Writing 1: Proportional"},
+{w:"proportion",def:"A part considered in relation to the whole",ex:"A large ___ of the budget goes to defense.",d:2,cat:"Writing 1: Proportional"},
+{w:"constitute",def:"To be a part of a whole",ex:"Women ___ 52% of the population.",d:2,cat:"Writing 1: Proportional"},
+{w:"comprise",def:"To consist of or be made up of",ex:"The team ___ twelve members.",d:2,cat:"Writing 1: Proportional"},
+{w:"disproportionate",def:"Too large or too small in comparison",ex:"A ___ amount was spent on defense.",d:3,cat:"Writing 1: Proportional"},
+{w:"predominantly",def:"Mainly or for the most part",ex:"The area is ___ rural.",d:2,cat:"Writing 1: Proportional"},
+{w:"negligible",def:"So small as to be meaningless",ex:"The difference was ___.",d:2,cat:"Writing 1: Proportional"},
+{w:"majority",def:"The greater number",ex:"The ___ voted in favor.",d:1,cat:"Writing 1: Proportional"},
+{w:"minority",def:"The smaller number or part",ex:"Only a ___ disagreed.",d:1,cat:"Writing 1: Proportional"},
+{w:"respectively",def:"Separately in the order mentioned",ex:"The UK and US scored 80 and 75 ___.",d:2,cat:"Writing 1: Proportional"},
+{w:"whereas",def:"In contrast to the fact that",ex:"Men preferred sports ___ women chose reading.",d:1,cat:"Writing 1: Proportional"},
+{w:"conversely",def:"In an opposite way",ex:"Exports rose; ___ imports declined.",d:2,cat:"Writing 1: Proportional"},
+
+// WRITING TASK 1 - Maps
+{w:"demolished",def:"Pulled or knocked down a building",ex:"The old factory was ___.",d:2,cat:"Writing 1: Maps"},
+{w:"reconstructed",def:"Built again after damage or decay",ex:"The bridge was ___ in 2010.",d:2,cat:"Writing 1: Maps"},
+{w:"renovated",def:"Restored to good condition",ex:"The hotel was recently ___.",d:2,cat:"Writing 1: Maps"},
+{w:"refurbished",def:"Renovated and redecorated",ex:"The library was completely ___.",d:2,cat:"Writing 1: Maps"},
+{w:"modernized",def:"Adapted to modern needs or standards",ex:"The airport was ___ in 2015.",d:1,cat:"Writing 1: Maps"},
+{w:"redeveloped",def:"Developed again or differently",ex:"The area was ___ into a park.",d:2,cat:"Writing 1: Maps"},
+{w:"restructured",def:"Organized differently",ex:"The company was ___ last year.",d:2,cat:"Writing 1: Maps"},
+{w:"relocated",def:"Moved to a new place",ex:"The office was ___ to the suburbs.",d:2,cat:"Writing 1: Maps"},
+{w:"infrastructure",def:"The basic structures needed for a society to function",ex:"The ___ was improved significantly.",d:2,cat:"Writing 1: Maps"},
+{w:"pedestrian",def:"A person walking",ex:"A new ___ zone was created.",d:2,cat:"Writing 1: Maps"},
+{w:"intersection",def:"A point where two roads cross",ex:"A roundabout replaced the ___.",d:2,cat:"Writing 1: Maps"},
+{w:"adjacent",def:"Next to or near",ex:"A park was built ___ to the school.",d:2,cat:"Writing 1: Maps"},
+{w:"periphery",def:"The outer edge of an area",ex:"Factories moved to the ___.",d:3,cat:"Writing 1: Maps"},
+{w:"residential",def:"Designed for people to live in",ex:"A new ___ area was established.",d:2,cat:"Writing 1: Maps"},
+
+// WRITING TASK 1 - Process
+{w:"subsequently",def:"After a particular event",ex:"The mixture is heated and ___ cooled.",d:2,cat:"Writing 1: Process"},
+{w:"thereafter",def:"After that time",ex:"The product is dried and ___ packaged.",d:2,cat:"Writing 1: Process"},
+{w:"simultaneously",def:"At the same time",ex:"Two processes occur ___.",d:3,cat:"Writing 1: Process"},
+{w:"evaporates",def:"Turns from liquid to vapor",ex:"The water ___ when heated.",d:2,cat:"Writing 1: Process"},
+{w:"condenses",def:"Changes from gas to liquid",ex:"Steam ___ on the cold surface.",d:2,cat:"Writing 1: Process"},
+{w:"filtered",def:"Passed through a filter to remove impurities",ex:"The liquid is ___ to remove solids.",d:1,cat:"Writing 1: Process"},
+{w:"purified",def:"Made free from contaminants",ex:"The water is ___ before bottling.",d:2,cat:"Writing 1: Process"},
+{w:"distilled",def:"Purified by heating and condensation",ex:"___ water is used in laboratories.",d:2,cat:"Writing 1: Process"},
+{w:"sterilized",def:"Made free from bacteria",ex:"The equipment is ___ before use.",d:2,cat:"Writing 1: Process"},
+{w:"distributed",def:"Given out to several recipients",ex:"The product is ___ nationwide.",d:1,cat:"Writing 1: Process"},
+{w:"extracted",def:"Removed or taken out",ex:"Oil is ___ from the ground.",d:2,cat:"Writing 1: Process"},
+{w:"compressed",def:"Flattened by pressure",ex:"The material is ___ into blocks.",d:2,cat:"Writing 1: Process"},
+{w:"fermented",def:"Undergone chemical breakdown by microorganisms",ex:"The juice is ___ to make wine.",d:2,cat:"Writing 1: Process"},
+{w:"preliminary",def:"Before the main part of a process",ex:"A ___ inspection is carried out.",d:2,cat:"Writing 1: Process"},
+
+// WRITING TASK 2 - Linking
+{w:"furthermore",def:"In addition; besides",ex:"The plan is costly. ___, it is impractical.",d:2,cat:"Writing 2: Linking"},
+{w:"moreover",def:"As a further matter; in addition",ex:"The results were positive; ___, they were consistent.",d:2,cat:"Writing 2: Linking"},
+{w:"nevertheless",def:"In spite of that; however",ex:"The task was hard; ___, she completed it.",d:2,cat:"Writing 2: Linking"},
+{w:"consequently",def:"As a result",ex:"He studied hard; ___, he passed.",d:2,cat:"Writing 2: Linking"},
+{w:"notwithstanding",def:"In spite of",ex:"___ the challenges, they succeeded.",d:3,cat:"Writing 2: Linking"},
+{w:"alternatively",def:"As another option",ex:"You could drive; ___, take the train.",d:2,cat:"Writing 2: Linking"},
+{w:"regardless",def:"Without being affected by",ex:"She continued ___ of the criticism.",d:2,cat:"Writing 2: Linking"},
+{w:"specifically",def:"In a precise and clear manner",ex:"The law ___ prohibits this.",d:1,cat:"Writing 2: Linking"},
+{w:"particularly",def:"To a higher degree than is usual",ex:"The results were ___ impressive.",d:1,cat:"Writing 2: Linking"},
+{w:"undoubtedly",def:"Without doubt; certainly",ex:"She is ___ the best candidate.",d:2,cat:"Writing 2: Linking"},
+{w:"predominantly",def:"Mainly; for the most part",ex:"The area is ___ agricultural.",d:2,cat:"Writing 2: Linking"},
+{w:"essentially",def:"At the most basic level",ex:"They are ___ the same.",d:1,cat:"Writing 2: Linking"},
+{w:"admittedly",def:"Used to acknowledge that something is true",ex:"___, the plan has flaws.",d:2,cat:"Writing 2: Linking"},
+{w:"conversely",def:"Introducing a contrasting point",ex:"Rich countries thrive; ___, poor ones struggle.",d:2,cat:"Writing 2: Linking"},
+
+// WRITING TASK 2 - Government & Economy
+{w:"bureaucracy",def:"Complex administrative procedures",ex:"Excessive ___ delays progress.",d:3,cat:"Writing 2: Government"},
+{w:"parliament",def:"A legislative body of government",ex:"___ debated the new law.",d:2,cat:"Writing 2: Government"},
+{w:"constitution",def:"The fundamental principles of a nation",ex:"Freedom of speech is in the ___.",d:2,cat:"Writing 2: Government"},
+{w:"democracy",def:"Government by the people",ex:"___ allows citizens to vote.",d:2,cat:"Writing 2: Government"},
+{w:"sovereignty",def:"Supreme power or authority of a state",ex:"National ___ must be respected.",d:3,cat:"Writing 2: Government"},
+{w:"legislation",def:"Laws enacted by a governing body",ex:"New ___ was introduced.",d:2,cat:"Writing 2: Government"},
+{w:"marginalized",def:"Treated as insignificant",ex:"___ communities need support.",d:2,cat:"Writing 2: Government"},
+{w:"socioeconomic",def:"Relating to social and economic factors",ex:"___ factors influence education.",d:3,cat:"Writing 2: Government"},
+{w:"equitable",def:"Fair and impartial",ex:"An ___ distribution of resources is needed.",d:2,cat:"Writing 2: Government"},
+{w:"consumerism",def:"The preoccupation with buying goods",ex:"___ drives the modern economy.",d:2,cat:"Writing 2: Government"},
+{w:"expenditure",def:"The amount of money spent",ex:"Government ___ on health increased.",d:2,cat:"Writing 2: Government"},
+{w:"subsidiary",def:"A company controlled by another",ex:"The ___ operates in Asia.",d:2,cat:"Writing 2: Government"},
+{w:"tariff",def:"A tax on imports or exports",ex:"New ___ regulations were imposed.",d:2,cat:"Writing 2: Government"},
+{w:"privatization",def:"Transfer from public to private ownership",ex:"___ of the railways was controversial.",d:3,cat:"Writing 2: Government"},
+
+// WRITING TASK 2 - Environment & Health
+{w:"deforestation",def:"The clearing of forests",ex:"___ threatens biodiversity.",d:2,cat:"Writing 2: Environment"},
+{w:"desertification",def:"The process of land becoming desert",ex:"___ is spreading in Africa.",d:3,cat:"Writing 2: Environment"},
+{w:"sustainable",def:"Able to be maintained without depletion",ex:"___ farming protects the soil.",d:2,cat:"Writing 2: Environment"},
+{w:"ecosystems",def:"Biological communities interacting with environment",ex:"Coral reef ___ are under threat.",d:2,cat:"Writing 2: Environment"},
+{w:"renewable",def:"Able to be replenished naturally",ex:"Solar energy is a ___ resource.",d:2,cat:"Writing 2: Environment"},
+{w:"conservation",def:"Prevention of wasteful use of resources",ex:"Wildlife ___ is a priority.",d:2,cat:"Writing 2: Environment"},
+{w:"contaminated",def:"Made impure by pollutants",ex:"The river was ___ by chemicals.",d:2,cat:"Writing 2: Environment"},
+{w:"biodiversity",def:"The variety of life in a habitat",ex:"Rainforests have rich ___.",d:2,cat:"Writing 2: Environment"},
+{w:"deterioration",def:"The process of becoming worse",ex:"Environmental ___ is alarming.",d:2,cat:"Writing 2: Environment"},
+{w:"emissions",def:"Substances discharged into the air",ex:"Carbon ___ must be reduced.",d:2,cat:"Writing 2: Environment"},
+{w:"greenhouse",def:"Relating to gases that trap heat in the atmosphere",ex:"___ gases cause global warming.",d:1,cat:"Writing 2: Environment"},
+{w:"endangered",def:"At serious risk of extinction",ex:"___ species need protection.",d:1,cat:"Writing 2: Environment"},
+{w:"erosion",def:"Gradual wearing away of soil or rock",ex:"Soil ___ damages farmland.",d:2,cat:"Writing 2: Environment"},
+{w:"precipitation",def:"Rain, snow, sleet, or hail",ex:"Annual ___ levels have changed.",d:2,cat:"Writing 2: Environment"},
+
+// WRITING TASK 2 - Technology & Innovation
+{w:"cybersecurity",def:"Protection of computer systems from attack",ex:"___ is a growing concern.",d:2,cat:"Writing 2: Technology"},
+{w:"bandwidth",def:"The capacity of data transfer",ex:"High ___ enables faster streaming.",d:2,cat:"Writing 2: Technology"},
+{w:"automation",def:"Use of machines to perform tasks",ex:"___ has replaced many jobs.",d:2,cat:"Writing 2: Technology"},
+{w:"algorithm",def:"A set of rules for problem-solving",ex:"The search ___ was updated.",d:2,cat:"Writing 2: Technology"},
+{w:"artificial",def:"Made by humans rather than occurring naturally",ex:"___ intelligence is advancing rapidly.",d:1,cat:"Writing 2: Technology"},
+{w:"indispensable",def:"Absolutely necessary",ex:"Technology has become ___.",d:2,cat:"Writing 2: Technology"},
+{w:"innovative",def:"Featuring new methods or ideas",ex:"The company is known for ___ products.",d:2,cat:"Writing 2: Technology"},
+{w:"surveillance",def:"Close observation of a person or group",ex:"CCTV ___ has increased.",d:2,cat:"Writing 2: Technology"},
+{w:"entrepreneurial",def:"Relating to setting up businesses",ex:"She had an ___ spirit.",d:3,cat:"Writing 2: Technology"},
+{w:"obsolete",def:"No longer in use or useful",ex:"The technology became ___.",d:2,cat:"Writing 2: Technology"},
+{w:"sophisticated",def:"Highly developed and complex",ex:"The software is very ___.",d:2,cat:"Writing 2: Technology"},
+{w:"infrastructure",def:"Underlying framework of a system",ex:"Digital ___ needs investment.",d:2,cat:"Writing 2: Technology"},
+{w:"unprecedented",def:"Never done or known before",ex:"The growth was ___.",d:2,cat:"Writing 2: Technology"},
+
+// WRITING TASK 2 - Education & Employment
+{w:"pedagogy",def:"The method and practice of teaching",ex:"Modern ___ emphasizes active learning.",d:3,cat:"Writing 2: Education"},
+{w:"curriculum",def:"The subjects in a course of study",ex:"The school ___ was updated.",d:2,cat:"Writing 2: Education"},
+{w:"cognitive",def:"Relating to mental processes of perception",ex:"___ development is rapid in children.",d:2,cat:"Writing 2: Education"},
+{w:"intellectual",def:"Relating to the intellect",ex:"___ curiosity drives learning.",d:2,cat:"Writing 2: Education"},
+{w:"semester",def:"A half-year term in school",ex:"The fall ___ begins in September.",d:1,cat:"Writing 2: Education"},
+{w:"enrollment",def:"The act of registering for a course",ex:"University ___ has increased.",d:2,cat:"Writing 2: Education"},
+{w:"aspirations",def:"Hopes or ambitions for achievement",ex:"Young people have high ___.",d:2,cat:"Writing 2: Education"},
+{w:"extracurricular",def:"Activities outside the normal curriculum",ex:"___ activities enrich student life.",d:3,cat:"Writing 2: Education"},
+{w:"scholarship",def:"Financial aid for education based on merit",ex:"She won a full ___.",d:2,cat:"Writing 2: Education"},
+{w:"apprenticeship",def:"Training under a skilled worker",ex:"He completed a plumbing ___.",d:2,cat:"Writing 2: Education"},
+{w:"vocational",def:"Relating to an occupation",ex:"___ training prepares students for jobs.",d:2,cat:"Writing 2: Education"},
+{w:"prerequisite",def:"A required condition before something else",ex:"Biology is a ___ for the course.",d:2,cat:"Writing 2: Education"},
+{w:"plagiarism",def:"Presenting others' work as your own",ex:"___ is a serious academic offense.",d:2,cat:"Writing 2: Education"},
+{w:"truancy",def:"Staying away from school without permission",ex:"___ rates have decreased.",d:2,cat:"Writing 2: Education"},
+
+// WRITING TASK 2 - Crime & Justice
+{w:"embezzlement",def:"Theft of funds placed in one's trust",ex:"The CEO was charged with ___.",d:3,cat:"Writing 2: Crime"},
+{w:"abduction",def:"The act of kidnapping someone",ex:"The ___ was reported to police.",d:2,cat:"Writing 2: Crime"},
+{w:"homicide",def:"The killing of one person by another",ex:"The ___ rate has declined.",d:2,cat:"Writing 2: Crime"},
+{w:"vandalism",def:"Deliberate destruction of property",ex:"___ of public spaces is a problem.",d:2,cat:"Writing 2: Crime"},
+{w:"delinquency",def:"Minor crime especially by young people",ex:"Juvenile ___ requires intervention.",d:2,cat:"Writing 2: Crime"},
+{w:"deterrence",def:"The action of discouraging an action",ex:"___ is a key function of punishment.",d:2,cat:"Writing 2: Crime"},
+{w:"accomplice",def:"A person who helps commit a crime",ex:"The ___ was also arrested.",d:2,cat:"Writing 2: Crime"},
+{w:"burglary",def:"Entry into a building to steal",ex:"___ rates have increased.",d:2,cat:"Writing 2: Crime"},
+{w:"imprisonment",def:"The state of being confined in prison",ex:"He faces ten years of ___.",d:2,cat:"Writing 2: Crime"},
+{w:"indictment",def:"A formal charge of a serious crime",ex:"The ___ was delivered by the jury.",d:3,cat:"Writing 2: Crime"},
+{w:"manslaughter",def:"The crime of killing without intent",ex:"He was convicted of ___.",d:3,cat:"Writing 2: Crime"},
+{w:"rehabilitation",def:"Restoring to normal life after prison",ex:"___ programs reduce reoffending.",d:2,cat:"Writing 2: Crime"},
+{w:"prosecution",def:"The conducting of legal proceedings",ex:"The ___ presented strong evidence.",d:2,cat:"Writing 2: Crime"},
+{w:"acquittal",def:"A judgement of not guilty",ex:"The jury reached an ___.",d:3,cat:"Writing 2: Crime"},
+{w:"recidivism",def:"The tendency to reoffend",ex:"___ rates remain high.",d:3,cat:"Writing 2: Crime"},
+
+// WRITING TASK 2 - Personality & Psychology
+{w:"meticulous",def:"Showing great attention to detail",ex:"She is a ___ researcher.",d:2,cat:"Writing 2: Personality"},
+{w:"conscientious",def:"Wishing to do what is right",ex:"He is a ___ worker.",d:3,cat:"Writing 2: Personality"},
+{w:"gregarious",def:"Fond of company; sociable",ex:"She has a ___ personality.",d:3,cat:"Writing 2: Personality"},
+{w:"altruistic",def:"Selflessly concerned for others",ex:"His motives were purely ___.",d:3,cat:"Writing 2: Personality"},
+{w:"pragmatic",def:"Dealing with things sensibly and realistically",ex:"She took a ___ approach.",d:2,cat:"Writing 2: Personality"},
+{w:"tenacious",def:"Holding firmly to something",ex:"Her ___ effort paid off.",d:2,cat:"Writing 2: Personality"},
+{w:"resilient",def:"Able to recover quickly from difficulties",ex:"Children are remarkably ___.",d:2,cat:"Writing 2: Personality"},
+{w:"empathetic",def:"Showing the ability to understand others' feelings",ex:"A good leader is ___.",d:2,cat:"Writing 2: Personality"},
+{w:"diligent",def:"Having or showing careful effort",ex:"___ students achieve more.",d:2,cat:"Writing 2: Personality"},
+{w:"charismatic",def:"Exercising a compelling charm",ex:"The ___ leader inspired millions.",d:2,cat:"Writing 2: Personality"},
+{w:"introverted",def:"Shy and reserved",ex:"___ people prefer quiet environments.",d:2,cat:"Writing 2: Personality"},
+{w:"extroverted",def:"Outgoing and socially confident",ex:"___ individuals thrive in groups.",d:2,cat:"Writing 2: Personality"},
+{w:"compassionate",def:"Feeling sympathy and concern for others",ex:"Nurses must be ___.",d:2,cat:"Writing 2: Personality"},
+{w:"sceptical",def:"Not easily convinced; doubting",ex:"Scientists should be ___.",d:2,cat:"Writing 2: Personality"},
+
+// WRITING TASK 2 - Art & Culture
+{w:"aesthetic",def:"Concerned with beauty or art appreciation",ex:"The building has great ___ appeal.",d:2,cat:"Writing 2: Art"},
+{w:"sculpture",def:"Art of making three-dimensional figures",ex:"The ___ was carved from marble.",d:2,cat:"Writing 2: Art"},
+{w:"symmetrical",def:"Made up of exactly similar parts",ex:"The design was perfectly ___.",d:2,cat:"Writing 2: Art"},
+{w:"perspective",def:"The art of representing 3D on a flat surface",ex:"The painting uses linear ___.",d:2,cat:"Writing 2: Art"},
+{w:"masterpiece",def:"A work of outstanding skill",ex:"The painting is considered a ___.",d:2,cat:"Writing 2: Art"},
+{w:"contemporary",def:"Belonging to the present time",ex:"She appreciates ___ art.",d:2,cat:"Writing 2: Art"},
+{w:"Renaissance",def:"The revival of art and learning in 14th-17th century Europe",ex:"___ art transformed European culture.",d:3,cat:"Writing 2: Art"},
+{w:"exhibition",def:"A public display of art or items",ex:"The ___ attracted thousands.",d:2,cat:"Writing 2: Art"},
+{w:"silhouette",def:"A dark shape or outline against a lighter background",ex:"The ___ of the building was striking.",d:3,cat:"Writing 2: Art"},
+{w:"choreography",def:"The sequence of steps in a dance",ex:"The ___ was beautifully designed.",d:3,cat:"Writing 2: Art"},
+{w:"calligraphy",def:"Decorative handwriting",ex:"She studied Japanese ___.",d:2,cat:"Writing 2: Art"},
+{w:"architecture",def:"The art or practice of designing buildings",ex:"Gothic ___ is impressive.",d:2,cat:"Writing 2: Art"},
+{w:"repertoire",def:"A stock of plays, dances, or pieces",ex:"The orchestra has a wide ___.",d:3,cat:"Writing 2: Art"},
+{w:"connoisseur",def:"An expert in matters of fine art or taste",ex:"He is a wine ___.",d:3,cat:"Writing 2: Art"},
+
+// SYNONYMS & PARAPHRASING
+{w:"crucial",def:"Of great importance (synonym: important)",ex:"This is a ___ decision.",d:2,cat:"Synonyms"},
+{w:"imperative",def:"Of vital importance; essential",ex:"It is ___ that we act now.",d:2,cat:"Synonyms"},
+{w:"augment",def:"To make greater in size (synonym: increase)",ex:"They plan to ___ the workforce.",d:3,cat:"Synonyms"},
+{w:"diminish",def:"To make or become less (synonym: decrease)",ex:"His influence began to ___.",d:2,cat:"Synonyms"},
+{w:"ameliorate",def:"To make something bad better (synonym: improve)",ex:"Steps were taken to ___ conditions.",d:3,cat:"Synonyms"},
+{w:"cultivate",def:"To try to develop (synonym: create)",ex:"She worked to ___ new relationships.",d:2,cat:"Synonyms"},
+{w:"heterogeneous",def:"Diverse in character (synonym: different)",ex:"The population is ___.",d:3,cat:"Synonyms"},
+{w:"exquisite",def:"Extremely beautiful (synonym: beautiful)",ex:"The craftsmanship was ___.",d:2,cat:"Synonyms"},
+{w:"picturesque",def:"Visually charming (synonym: beautiful)",ex:"The village was very ___.",d:2,cat:"Synonyms"},
+{w:"jubilant",def:"Feeling great happiness (synonym: happy)",ex:"The crowd was ___ after the victory.",d:2,cat:"Synonyms"},
+{w:"ecstatic",def:"Overwhelmingly happy (synonym: happy)",ex:"She was ___ about the news.",d:2,cat:"Synonyms"},
+{w:"elated",def:"Extremely happy and excited",ex:"He felt ___ after the promotion.",d:2,cat:"Synonyms"},
+{w:"generate",def:"To produce or create (synonym: create)",ex:"The project will ___ new jobs.",d:1,cat:"Synonyms"},
+{w:"establish",def:"To set up on a permanent basis (synonym: create)",ex:"They plan to ___ a new branch.",d:1,cat:"Synonyms"},
+{w:"diverse",def:"Showing great variety (synonym: different)",ex:"The team is culturally ___.",d:1,cat:"Synonyms"},
+{w:"varied",def:"Incorporating different types (synonym: different)",ex:"She has ___ interests.",d:1,cat:"Synonyms"},
+{w:"enhance",def:"To improve the quality of (synonym: improve)",ex:"Lighting can ___ the atmosphere.",d:2,cat:"Synonyms"},
+{w:"refine",def:"To improve by small changes (synonym: improve)",ex:"They continue to ___ the process.",d:2,cat:"Synonyms"},
+{w:"surge",def:"A sudden powerful increase",ex:"There was a ___ in demand.",d:2,cat:"Synonyms"},
+{w:"decline",def:"To become smaller or fewer",ex:"Birth rates continue to ___.",d:1,cat:"Synonyms"},
+{w:"vital",def:"Absolutely necessary (synonym: important)",ex:"Water is ___ for life.",d:1,cat:"Synonyms"},
+{w:"boost",def:"To help increase or improve",ex:"The campaign will ___ sales.",d:1,cat:"Synonyms"},
+];
+
+// Deduplicate by word
+const seen = new Set();
+const WORD_DB = [];
+for (const w of WORDS) {
+  const key = w.w.toLowerCase();
+  if (!seen.has(key)) { seen.add(key); WORD_DB.push(w); }
+}
+
+// ===================== CATEGORIES =====================
+const CATEGORIES = {};
+WORD_DB.forEach(w => { if (!CATEGORIES[w.cat]) CATEGORIES[w.cat] = []; CATEGORIES[w.cat].push(w); });
+const CAT_LIST = Object.keys(CATEGORIES).sort();
+
+const CAT_COLORS = {
+  "Listening: Commercial":"#3b82f6","Listening: Domestic":"#6366f1","Listening: Materials":"#8b5cf6","Listening: Health":"#10b981","Listening: Travel":"#f59e0b",
+  "Traps: Consonant Doubling":"#ef4444","Traps: Silent Letters":"#ec4899","Traps: ei/ie":"#06b6d4","Traps: Morphological":"#84cc16","Traps: Homophones":"#f97316",
+  "AWL: Foundation":"#6366f1","AWL: Structural":"#14b8a6","AWL: Advanced":"#a855f7",
+  "Writing 1: Trends":"#0ea5e9","Writing 1: Proportional":"#22c55e","Writing 1: Maps":"#eab308","Writing 1: Process":"#d946ef",
+  "Writing 2: Linking":"#64748b","Writing 2: Government":"#dc2626","Writing 2: Environment":"#16a34a","Writing 2: Technology":"#7c3aed","Writing 2: Education":"#2563eb","Writing 2: Crime":"#991b1b","Writing 2: Personality":"#c026d3","Writing 2: Art":"#ea580c",
+  "Synonyms":"#0d9488"
+};
+
+// ===================== STATE =====================
+const LS_KEY = 'ielts_spelling_v2';
+let state;
+function defaultState() {
+  return {
+    theme: 'light', xp: 0, level: 1, streak: 0, lastDate: null, dailyCount: 0, dailyGoal: 20, totalPracticed: 0,
+    wordStats: {}, // { word: { attempts, correct, lastSeen, interval, nextDue } }
+    achievements: {},
+    history: [], // { date, accuracy, wordsCount }
+    settings: { voiceRate: 0.9, voiceLang: 'en-GB' }
+  };
+}
+function loadState() {
+  try { const s = localStorage.getItem(LS_KEY); state = s ? {...defaultState(), ...JSON.parse(s)} : defaultState(); } catch(e) { state = defaultState(); }
+  checkStreak();
+}
+function saveState() { try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e){} }
+function checkStreak() {
+  const today = new Date().toISOString().split('T')[0];
+  if (state.lastDate === today) return;
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  if (state.lastDate === yesterday) { /* streak continues */ }
+  else if (state.lastDate !== today) { state.streak = 0; }
+  if (state.lastDate !== today) { state.dailyCount = 0; }
+}
+function recordActivity() {
+  const today = new Date().toISOString().split('T')[0];
+  if (state.lastDate !== today) { state.streak++; state.dailyCount = 0; }
+  state.lastDate = today; state.dailyCount++; state.totalPracticed++;
+  saveState();
+}
+
+// ===================== XP & LEVELS =====================
+function xpForLevel(l) { return 80 + l * 40; }
+function addXP(amount) {
+  state.xp += amount;
+  while (state.xp >= xpForLevel(state.level)) { state.xp -= xpForLevel(state.level); state.level++; triggerConfetti(); }
+  saveState(); updateSidebar();
+}
+function getLevelTitle() {
+  const l = state.level;
+  if (l <= 3) return 'Beginner'; if (l <= 6) return 'Elementary'; if (l <= 10) return 'Intermediate';
+  if (l <= 15) return 'Upper-Intermediate'; if (l <= 20) return 'Advanced'; return 'Expert';
+}
+
+// ===================== WORD STATS =====================
+function getWordStat(word) {
+  if (!state.wordStats[word]) state.wordStats[word] = { attempts: 0, correct: 0, lastSeen: 0, interval: 1, nextDue: 0 };
+  return state.wordStats[word];
+}
+function recordWordResult(word, isCorrect) {
+  const ws = getWordStat(word);
+  ws.attempts++; if (isCorrect) ws.correct++;
+  ws.lastSeen = Date.now();
+  if (isCorrect) { ws.interval = Math.min(ws.interval * 2.5, 30); } else { ws.interval = 1; }
+  ws.nextDue = Date.now() + ws.interval * 86400000;
+  recordActivity(); addXP(isCorrect ? 10 : 2); checkAchievements();
+}
+function isMastered(word) { const ws = getWordStat(word); return ws.attempts >= 3 && (ws.correct / ws.attempts) >= 0.8; }
+function getAccuracy(word) { const ws = getWordStat(word); return ws.attempts > 0 ? Math.round(ws.correct / ws.attempts * 100) : null; }
+
+// ===================== SPACED REPETITION =====================
+function getWordPool(cat) {
+  let pool = cat ? CATEGORIES[cat] || [] : [...WORD_DB];
+  // Sort: due words first, then unseen, then others
+  const now = Date.now();
+  pool.sort((a, b) => {
+    const sa = getWordStat(a.w), sb = getWordStat(b.w);
+    const da = sa.attempts === 0 ? -1 : (sa.nextDue <= now ? 0 : 1);
+    const db = sb.attempts === 0 ? -1 : (sb.nextDue <= now ? 0 : 1);
+    if (da !== db) return da - db;
+    // Prioritize words with lower accuracy
+    const aa = sa.attempts > 0 ? sa.correct / sa.attempts : 0.5;
+    const ab = sb.attempts > 0 ? sb.correct / sb.attempts : 0.5;
+    return aa - ab;
+  });
+  return pool;
+}
+
+// ===================== COMMON MISSPELLINGS =====================
+const MISSPELLINGS = {
+  accommodation: ["accomodation","acommodation","acomodation"],
+  millennium: ["milennium","milenium","millenium"],
+  questionnaire: ["questionaire","questionare","questionnare"],
+  occurrence: ["occurence","occurrance","ocurrence"],
+  recommend: ["recomend","reccommend","recomend"],
+  necessary: ["neccessary","necesary","neccesary"],
+  embarrassment: ["embarassment","embarrasment","embarasment"],
+  Mediterranean: ["Mediteranean","Mediterranian","Mediterrenean"],
+  pronunciation: ["pronounciation","pronuncation"],
+  Wednesday: ["Wensday","Wendesday","Wedensday"],
+  February: ["Febuary","Feburary","Febrary"],
+  environment: ["enviroment","envirnoment","enviorment"],
+  government: ["goverment","govenment","governement"],
+  rhythm: ["rythm","rhthym","rythym"],
+  conscience: ["concience","consience","consciense"],
+  psychology: ["psycology","phsychology","psycholgy"],
+  receive: ["recieve","receeve","receve"],
+  believe: ["beleive","belive","beleave"],
+  achieve: ["acheive","achive","acheeve"],
+  bureaucracy: ["beauracracy","buracracy","buerocracy"],
+  conscientious: ["concientious","consciencious","consientious"],
+  silhouette: ["silouette","silhouete","silouhette"],
+  itinerary: ["itinerey","itinarary","itinenary"],
+  definitely: ["definately","definitly","definatly"],
+  separate: ["seperate","seperete","seprate"],
+  restaurant: ["restaraunt","resturant","restraunt"],
+  exhibition: ["exibition","exhbition","exibhition"],
+  surveillance: ["surveilance","survellance","surviellance"],
+  entrepreneur: ["entrepeneur","entreprenur","entreprenuer"],
+  entrepreneurial: ["entrepeneurial","entreprenuerial"],
+  hierarchy: ["heirarchy","hierachy","hiearchy"],
+  hierarchical: ["heirarchical","hierachical"],
+  disproportionate: ["disproportianate","disproportionite"],
+  cholesterol: ["colesterol","cholestrol","cholesteral"],
+  pharmaceutical: ["pharmeceutical","farmaceutical"],
+  kindergarten: ["kindergarden","kindergartan"],
+  exaggerate: ["exagerate","exagerrate","exaggarate"],
+  cappuccino: ["capuccino","cappucino","capucino"],
+  Renaissance: ["Renaisance","Rennaissance","Renissance"],
+};
+function getCommonMisspelling(word) {
+  const m = MISSPELLINGS[word];
+  if (m) return m[Math.floor(Math.random() * m.length)];
+  // Generate a random misspelling
+  const w = word; const i = Math.floor(Math.random() * (w.length - 2)) + 1;
+  const ops = [
+    () => w.slice(0,i) + w.slice(i+1), // delete
+    () => w.slice(0,i) + w[i+1] + w[i] + w.slice(i+2), // swap
+    () => w.slice(0,i) + w[i] + w[i] + w.slice(i+1), // double
+    () => { const v = 'aeiou'; return w.slice(0,i) + v[Math.floor(Math.random()*5)] + w.slice(i+1); } // replace vowel
+  ];
+  const result = ops[Math.floor(Math.random() * ops.length)]();
+  return result !== word ? result : word.slice(0, -1);
+}
+function getMnemonicTip(word) {
+  const tips = {
+    accommodation: "2 c's and 2 m's - it's big enough to accommodate both",
+    necessary: "1 collar (c) and 2 socks (s) are necessary",
+    believe: "Never beLIEve a LIE",
+    receive: "I before E except after C - reCEIve",
+    separate: "There's A RAT in sepARAte",
+    rhythm: "Rhythm Helps Your Two Hips Move",
+    Wednesday: "Think: Wed-NES-day",
+    February: "Think: Feb-RU-ary",
+    environment: "There's IRON in the envIRONment",
+    government: "There's an N in goverNment",
+    definitely: "It's definITEly not definATEly",
+    conscience: "CON-SCIENCE - it's a science of right and wrong",
+    psychology: "PSY starts with a silent P",
+    bureaucracy: "BUREAU + CRACY - like a bureau of rules",
+    Mediterranean: "Think: MEDI-TERRA-NEAN (middle earth sea)",
+    questionnaire: "It has 2 n's - think QUESTION + NAIRE",
+    embarrassment: "2 r's and 2 s's - double the embarrassment",
+    millennium: "2 l's and 2 n's in millennium",
+    silhouette: "SILHOU-ETTE - French origin, think of the shape",
+    itinerary: "Think: I-TIN-ER-ARY (tin for travel planning)",
+    occurrence: "2 c's and 2 r's - it occurs with doubles",
+  };
+  return tips[word] || null;
+}
+
+// ===================== ACHIEVEMENTS =====================
+const ACHIEVEMENTS = [
+  {id:'first_word', name:'First Steps', desc:'Practice your first word', icon:'&#127793;', check:()=>state.totalPracticed>=1},
+  {id:'ten_words', name:'Getting Started', desc:'Practice 10 words', icon:'&#128218;', check:()=>state.totalPracticed>=10},
+  {id:'fifty_words', name:'Dedicated Learner', desc:'Practice 50 words', icon:'&#128214;', check:()=>state.totalPracticed>=50},
+  {id:'hundred_words', name:'Centurion', desc:'Practice 100 words', icon:'&#127942;', check:()=>state.totalPracticed>=100},
+  {id:'five_hundred', name:'Word Warrior', desc:'Practice 500 words', icon:'&#9876;', check:()=>state.totalPracticed>=500},
+  {id:'streak_3', name:'Consistent', desc:'3-day streak', icon:'&#128293;', check:()=>state.streak>=3},
+  {id:'streak_7', name:'Weekly Champion', desc:'7-day streak', icon:'&#11088;', check:()=>state.streak>=7},
+  {id:'streak_30', name:'Monthly Master', desc:'30-day streak', icon:'&#128081;', check:()=>state.streak>=30},
+  {id:'perfect_10', name:'Perfect 10', desc:'Get 10 words correct in a row', icon:'&#127775;', check:()=>state.achievements.perfect_10},
+  {id:'all_cats', name:'Explorer', desc:'Practice words from every category', icon:'&#127757;', check:()=>{
+    const cats = new Set(); Object.keys(state.wordStats).forEach(w => { const f = WORD_DB.find(x=>x.w===w); if(f) cats.add(f.cat); }); return cats.size >= CAT_LIST.length * 0.8;
+  }},
+  {id:'master_50', name:'Spelling Bee', desc:'Master 50 words', icon:'&#128029;', check:()=>Object.keys(state.wordStats).filter(w=>isMastered(w)).length>=50},
+  {id:'master_100', name:'Spelling Bee Champion', desc:'Master 100 words', icon:'&#127881;', check:()=>Object.keys(state.wordStats).filter(w=>isMastered(w)).length>=100},
+  {id:'master_200', name:'Academic Master', desc:'Master 200 words', icon:'&#127891;', check:()=>Object.keys(state.wordStats).filter(w=>isMastered(w)).length>=200},
+  {id:'level_5', name:'Rising Star', desc:'Reach level 5', icon:'&#127775;', check:()=>state.level>=5},
+  {id:'level_10', name:'Expert Speller', desc:'Reach level 10', icon:'&#128142;', check:()=>state.level>=10},
+  {id:'level_20', name:'Legendary', desc:'Reach level 20', icon:'&#128302;', check:()=>state.level>=20},
+  {id:'daily_goal', name:'Daily Goal', desc:'Complete your daily goal', icon:'&#9989;', check:()=>state.dailyCount>=state.dailyGoal},
+];
+function checkAchievements() {
+  let newAch = false;
+  ACHIEVEMENTS.forEach(a => { if (!state.achievements[a.id] && a.check()) { state.achievements[a.id] = Date.now(); newAch = true; } });
+  if (newAch) saveState();
+}
+
+// ===================== SPEECH =====================
+function speak(text, cb) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = state.settings.voiceRate || 0.9;
+  u.lang = state.settings.voiceLang || 'en-GB';
+  const voices = window.speechSynthesis.getVoices();
+  const pref = voices.find(v => v.lang.startsWith('en-GB')) || voices.find(v => v.lang.startsWith('en'));
+  if (pref) u.voice = pref;
+  if (cb) u.onend = cb;
+  window.speechSynthesis.speak(u);
+}
+
+// ===================== CONFETTI =====================
+function triggerConfetti() {
+  const colors = ['#3b82f6','#8b5cf6','#10b981','#f59e0b','#ef4444','#ec4899'];
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.width = (6 + Math.random() * 8) + 'px';
+    el.style.height = (6 + Math.random() * 8) + 'px';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    el.style.animationDuration = (2 + Math.random() * 2) + 's';
+    el.style.animationDelay = Math.random() * 0.5 + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 4000);
+  }
+}
+
+// ===================== NAVIGATION & UI =====================
+let currentPage = 'dashboard';
+let currentCat = null;
+let currentMode = null;
+let practiceState = {};
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function toggleTheme() {
+  state.theme = state.theme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.getElementById('themeBtn').innerHTML = state.theme === 'dark' ? '&#9788; Light' : '&#9789; Dark';
+  saveState();
+}
+
+function buildSidebar() {
+  const nav = document.getElementById('sidebarNav');
+  const sections = [
+    { title: 'Main', items: [
+      { id:'dashboard', label:'Dashboard', icon:'&#9783;' },
+      { id:'practice', label:'Practice', icon:'&#9998;' },
+      { id:'achievements', label:'Achievements', icon:'&#127942;' },
+      { id:'report', label:'Report', icon:'&#128203;' },
+      { id:'settings', label:'Settings', icon:'&#9881;' },
+    ]},
+    { title: 'Listening Module', items: CAT_LIST.filter(c=>c.startsWith('Listening')).map(c=>({id:'cat:'+c, label:c.split(': ')[1], dot:CAT_COLORS[c], badge:CATEGORIES[c].length})) },
+    { title: 'Orthographic Traps', items: CAT_LIST.filter(c=>c.startsWith('Traps')).map(c=>({id:'cat:'+c, label:c.split(': ')[1], dot:CAT_COLORS[c], badge:CATEGORIES[c].length})) },
+    { title: 'Academic Word List', items: CAT_LIST.filter(c=>c.startsWith('AWL')).map(c=>({id:'cat:'+c, label:c.split(': ')[1], dot:CAT_COLORS[c], badge:CATEGORIES[c].length})) },
+    { title: 'Writing Task 1', items: CAT_LIST.filter(c=>c.startsWith('Writing 1')).map(c=>({id:'cat:'+c, label:c.split(': ')[1], dot:CAT_COLORS[c], badge:CATEGORIES[c].length})) },
+    { title: 'Writing Task 2', items: CAT_LIST.filter(c=>c.startsWith('Writing 2')).map(c=>({id:'cat:'+c, label:c.split(': ')[1], dot:CAT_COLORS[c], badge:CATEGORIES[c].length})) },
+    { title: 'Paraphrasing', items: CAT_LIST.filter(c=>c.startsWith('Synonym')).map(c=>({id:'cat:'+c, label:c.split(': ')[1] || c, dot:CAT_COLORS[c], badge:CATEGORIES[c].length})) },
+  ];
+  nav.innerHTML = sections.map(s => `
+    <div class="nav-section">
+      <div class="nav-section-title">${s.title}</div>
+      ${s.items.map(i => `
+        <div class="nav-item${currentPage===i.id?' active':''}" onclick="navigate('${i.id}')">
+          ${i.dot ? `<span class="dot" style="background:${i.dot}"></span>` : `<span>${i.icon||''}</span>`}
+          ${i.label}
+          ${i.badge ? `<span class="badge">${i.badge}</span>` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function updateSidebar() {
+  const needed = xpForLevel(state.level);
+  document.getElementById('levelLabel').textContent = `Level ${state.level} - ${getLevelTitle()}`;
+  document.getElementById('xpLabel').textContent = `${state.xp} / ${needed} XP`;
+  document.getElementById('xpBarFill').style.width = (state.xp / needed * 100) + '%';
+  document.getElementById('streakInfo').innerHTML = `&#128293; ${state.streak} day streak`;
+  document.getElementById('dailyCount').textContent = state.dailyCount;
+  document.getElementById('dailyGoalNum').textContent = state.dailyGoal;
+}
+
+function navigate(page) {
+  currentPage = page;
+  if (page.startsWith('cat:')) {
+    currentCat = page.slice(4);
+    currentPage = 'category';
+  }
+  buildSidebar(); updateSidebar(); render();
+  // Close sidebar on mobile
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+function render() {
+  const area = document.getElementById('contentArea');
+  const title = document.getElementById('pageTitle');
+  switch(currentPage) {
+    case 'dashboard': title.textContent = 'Dashboard'; area.innerHTML = renderDashboard(); break;
+    case 'practice': title.textContent = 'Practice Modes'; area.innerHTML = renderPractice(); break;
+    case 'category': title.textContent = currentCat; area.innerHTML = renderCategory(); break;
+    case 'achievements': title.textContent = 'Achievements'; area.innerHTML = renderAchievements(); break;
+    case 'report': title.textContent = 'Progress Report'; area.innerHTML = renderReport(); break;
+    case 'settings': title.textContent = 'Settings'; area.innerHTML = renderSettings(); break;
+    case 'mode': title.textContent = currentMode?.title || 'Practice'; area.innerHTML = ''; startPracticeSession(); break;
+    default: title.textContent = 'Dashboard'; area.innerHTML = renderDashboard();
+  }
+}
+
+// ===================== DASHBOARD =====================
+function renderDashboard() {
+  const mastered = Object.keys(state.wordStats).filter(w => isMastered(w)).length;
+  const inProgress = Object.keys(state.wordStats).filter(w => !isMastered(w) && getWordStat(w).attempts > 0).length;
+  const totalAcc = Object.values(state.wordStats).reduce((a,s) => a + (s.attempts > 0 ? s.correct : 0), 0);
+  const totalAtt = Object.values(state.wordStats).reduce((a,s) => a + s.attempts, 0);
+  const acc = totalAtt > 0 ? Math.round(totalAcc / totalAtt * 100) : 0;
+  return `
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-value">${state.totalPracticed}</div><div class="stat-label">Total Practiced</div></div>
+      <div class="stat-card"><div class="stat-value">${mastered}</div><div class="stat-label">Words Mastered</div></div>
+      <div class="stat-card"><div class="stat-value">${acc}%</div><div class="stat-label">Overall Accuracy</div></div>
+      <div class="stat-card"><div class="stat-value">${state.streak}</div><div class="stat-label">Day Streak</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Quick Start</div><div class="card-subtitle">Jump into a practice mode</div></div></div>
+      <div class="modes-grid">
+        <div class="mode-card" onclick="startMode('listen')">
+          <div class="mode-icon">&#128266;</div><h3>Listen & Spell</h3>
+          <p>Hear the word spoken aloud and type the correct spelling</p>
+          <span class="mode-tag" style="background:var(--primary-light);color:var(--primary);">Audio</span>
+        </div>
+        <div class="mode-card" onclick="startMode('definition')">
+          <div class="mode-icon">&#128214;</div><h3>Definition Match</h3>
+          <p>Read the definition and type the matching vocabulary word</p>
+          <span class="mode-tag" style="background:var(--accent-light);color:var(--accent);">Reading</span>
+        </div>
+        <div class="mode-card" onclick="startMode('gap')">
+          <div class="mode-icon">&#9999;</div><h3>Fill the Gap</h3>
+          <p>Complete sentences by typing the missing word</p>
+          <span class="mode-tag" style="background:var(--success-light);color:var(--success);">Context</span>
+        </div>
+        <div class="mode-card" onclick="startMode('bee')">
+          <div class="mode-icon">&#128029;</div><h3>Spelling Bee</h3>
+          <p>Progressive difficulty with a lives system - how far can you go?</p>
+          <span class="mode-tag" style="background:var(--warning-light);color:var(--warning);">Challenge</span>
+        </div>
+        <div class="mode-card" onclick="startMode('quickfix')">
+          <div class="mode-icon">&#128295;</div><h3>Quick Fix</h3>
+          <p>Spot the misspelling and type the correct version</p>
+          <span class="mode-tag" style="background:var(--danger-light);color:var(--danger);">Speed</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Category Progress</div><div class="card-subtitle">Your mastery across all categories</div></div></div>
+      <div style="display:grid;gap:8px;">
+        ${CAT_LIST.map(cat => {
+          const words = CATEGORIES[cat];
+          const m = words.filter(w => isMastered(w.w)).length;
+          const pct = Math.round(m / words.length * 100);
+          return `<div style="display:flex;align-items:center;gap:12px;">
+            <span class="dot" style="background:${CAT_COLORS[cat]||'#999'};width:10px;height:10px;border-radius:50%;flex-shrink:0"></span>
+            <span style="font-size:13px;font-weight:500;width:180px;flex-shrink:0">${cat}</span>
+            <div style="flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${CAT_COLORS[cat]||'#999'};border-radius:3px;transition:width .3s"></div></div>
+            <span style="font-size:12px;color:var(--text3);width:40px;text-align:right">${m}/${words.length}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// ===================== PRACTICE MODES =====================
+function renderPractice() {
+  return `
+    <div class="modes-grid">
+      <div class="mode-card" onclick="startMode('listen')"><div class="mode-icon">&#128266;</div><h3>Listen & Spell</h3><p>Hear the word and type it correctly</p></div>
+      <div class="mode-card" onclick="startMode('definition')"><div class="mode-icon">&#128214;</div><h3>Definition Match</h3><p>Type the word that matches the definition</p></div>
+      <div class="mode-card" onclick="startMode('gap')"><div class="mode-icon">&#9999;</div><h3>Fill the Gap</h3><p>Fill in the missing word in a sentence</p></div>
+      <div class="mode-card" onclick="startMode('bee')"><div class="mode-icon">&#128029;</div><h3>Spelling Bee</h3><p>Progressive difficulty with lives</p></div>
+      <div class="mode-card" onclick="startMode('quickfix')"><div class="mode-icon">&#128295;</div><h3>Quick Fix</h3><p>Fix the misspelled word</p></div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:12px">Select Categories</div>
+      <div class="cat-selector" id="catSelector">
+        <div class="cat-chip active" onclick="toggleCatFilter(this, null)">All</div>
+        ${CAT_LIST.map(c => `<div class="cat-chip" onclick="toggleCatFilter(this, '${c}')">${c}</div>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+let selectedCats = [];
+function toggleCatFilter(el, cat) {
+  if (!cat) { selectedCats = []; document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); return; }
+  document.querySelector('.cat-chip.active:first-child')?.classList.remove('active');
+  el.classList.toggle('active');
+  if (el.classList.contains('active')) { selectedCats.push(cat); } else { selectedCats = selectedCats.filter(c => c !== cat); }
+  if (selectedCats.length === 0) document.querySelector('.cat-chip').classList.add('active');
+}
+
+function startMode(mode) {
+  const modes = {
+    listen: { title:'Listen & Spell', type:'listen' },
+    definition: { title:'Definition Match', type:'definition' },
+    gap: { title:'Fill the Gap', type:'gap' },
+    bee: { title:'Spelling Bee', type:'bee' },
+    quickfix: { title:'Quick Fix', type:'quickfix' },
+  };
+  currentMode = modes[mode];
+  currentPage = 'mode';
+  buildSidebar(); render();
+}
+
+function startPracticeSession() {
+  let pool = [];
+  if (selectedCats.length > 0) { selectedCats.forEach(c => pool.push(...getWordPool(c))); }
+  else if (currentCat) { pool = getWordPool(currentCat); }
+  else { pool = getWordPool(null); }
+  if (pool.length === 0) { pool = [...WORD_DB]; }
+  // Shuffle with bias towards due words
+  const shuffled = pool.slice(0, 20);
+  practiceState = {
+    words: shuffled, current: 0, correct: 0, total: shuffled.length,
+    lives: currentMode.type === 'bee' ? 3 : Infinity,
+    streak: 0, maxStreak: 0,
+    answered: false
+  };
+  renderPracticeUI();
+}
+
+function renderPracticeUI() {
+  const ps = practiceState;
+  const area = document.getElementById('contentArea');
+  if (ps.current >= ps.total || ps.lives <= 0) { renderPracticeResults(); return; }
+  const word = ps.words[ps.current];
+  const catColor = CAT_COLORS[word.cat] || '#999';
+  const difficulty = word.d;
+
+  let content = '';
+  const header = `
+    <div class="back-btn" onclick="navigate('dashboard')">&larr; Back</div>
+    <div class="practice-header">
+      <div class="practice-progress">
+        <div class="progress-bar"><div class="progress-bar-fill" style="width:${ps.current/ps.total*100}%"></div></div>
+        <span class="progress-text">${ps.current + 1} / ${ps.total}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        ${currentMode.type === 'bee' ? `<div class="lives">${Array(3).fill(0).map((_,i) => `<span class="life${i >= ps.lives ? ' lost' : ''}">&#10084;</span>`).join('')}</div>` : ''}
+        <span style="font-size:13px;color:var(--text3);">Score: ${ps.correct}/${ps.current}</span>
+      </div>
+    </div>
+  `;
+
+  if (currentMode.type === 'listen') {
+    content = `${header}
+      <div class="word-card" id="wordCard">
+        <span class="word-category-tag" style="background:${catColor}20;color:${catColor}">${word.cat}</span>
+        <div class="word-difficulty">${Array(3).fill(0).map((_,i)=>`<span class="star${i<difficulty?'':' empty'}">&#9733;</span>`).join('')}</div>
+        <button class="listen-btn" id="listenBtn" onclick="speakWord()">&#128266;</button>
+        <p style="font-size:13px;color:var(--text3);margin-bottom:16px;">Click to hear the word, then type it below</p>
+        <div class="input-area">
+          <input type="text" class="spell-input" id="spellInput" placeholder="Type the word..." autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')checkAnswer()">
+          <button class="btn btn-primary" onclick="checkAnswer()">Check</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>`;
+  } else if (currentMode.type === 'definition') {
+    content = `${header}
+      <div class="word-card" id="wordCard">
+        <span class="word-category-tag" style="background:${catColor}20;color:${catColor}">${word.cat}</span>
+        <div class="word-difficulty">${Array(3).fill(0).map((_,i)=>`<span class="star${i<difficulty?'':' empty'}">&#9733;</span>`).join('')}</div>
+        <div class="word-definition">${word.def}</div>
+        <div class="input-area">
+          <input type="text" class="spell-input" id="spellInput" placeholder="Type the word..." autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')checkAnswer()">
+          <button class="btn btn-primary" onclick="checkAnswer()">Check</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>`;
+  } else if (currentMode.type === 'gap') {
+    const sentence = word.ex.replace('___', `<span class="gap-word">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
+    content = `${header}
+      <div class="word-card" id="wordCard">
+        <span class="word-category-tag" style="background:${catColor}20;color:${catColor}">${word.cat}</span>
+        <div class="sentence-display">${sentence}</div>
+        <p style="font-size:13px;color:var(--text3);margin-bottom:12px;">${word.def}</p>
+        <div class="input-area">
+          <input type="text" class="spell-input" id="spellInput" placeholder="Type the missing word..." autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')checkAnswer()">
+          <button class="btn btn-primary" onclick="checkAnswer()">Check</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>`;
+  } else if (currentMode.type === 'bee') {
+    content = `${header}
+      <div class="word-card" id="wordCard">
+        <span class="word-category-tag" style="background:${catColor}20;color:${catColor}">${word.cat}</span>
+        <div class="word-difficulty">${Array(3).fill(0).map((_,i)=>`<span class="star${i<difficulty?'':' empty'}">&#9733;</span>`).join('')}</div>
+        <button class="listen-btn" id="listenBtn" onclick="speakWord()">&#128266;</button>
+        <div class="word-definition">${word.def}</div>
+        <p style="font-size:12px;color:var(--text4);margin-bottom:12px;">${word.ex.replace(word.w, '___').replace('___', '___')}</p>
+        <div class="input-area">
+          <input type="text" class="spell-input" id="spellInput" placeholder="Spell the word..." autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')checkAnswer()">
+          <button class="btn btn-primary" onclick="checkAnswer()">Check</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>`;
+  } else if (currentMode.type === 'quickfix') {
+    const misspelled = getCommonMisspelling(word.w);
+    practiceState.misspelled = misspelled;
+    content = `${header}
+      <div class="word-card" id="wordCard">
+        <span class="word-category-tag" style="background:${catColor}20;color:${catColor}">${word.cat}</span>
+        <p style="font-size:13px;color:var(--text3);margin-bottom:8px;">Fix this misspelling:</p>
+        <div class="misspelled-word">${misspelled}</div>
+        <p style="font-size:13px;color:var(--text3);margin-bottom:12px;">Hint: ${word.def}</p>
+        <div class="input-area">
+          <input type="text" class="spell-input" id="spellInput" placeholder="Type the correct spelling..." autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')checkAnswer()">
+          <button class="btn btn-primary" onclick="checkAnswer()">Check</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>`;
+  }
+  area.innerHTML = content;
+  practiceState.answered = false;
+  setTimeout(() => { const inp = document.getElementById('spellInput'); if (inp) inp.focus(); }, 100);
+  if (currentMode.type === 'listen' || currentMode.type === 'bee') { setTimeout(() => speakWord(), 300); }
+}
+
+function speakWord() {
+  const word = practiceState.words[practiceState.current];
+  const btn = document.getElementById('listenBtn');
+  if (btn) btn.classList.add('speaking');
+  speak(word.w, () => { if (btn) btn.classList.remove('speaking'); });
+}
+
+function checkAnswer() {
+  if (practiceState.answered) { nextWord(); return; }
+  const input = document.getElementById('spellInput');
+  const word = practiceState.words[practiceState.current];
+  const answer = input.value.trim().toLowerCase();
+  const correct = word.w.toLowerCase();
+  const isCorrect = answer === correct;
+
+  practiceState.answered = true;
+  recordWordResult(word.w, isCorrect);
+
+  const card = document.getElementById('wordCard');
+  const fb = document.getElementById('feedback');
+
+  if (isCorrect) {
+    practiceState.correct++;
+    practiceState.streak++;
+    if (practiceState.streak > practiceState.maxStreak) practiceState.maxStreak = practiceState.streak;
+    if (practiceState.streak >= 10 && !state.achievements.perfect_10) { state.achievements.perfect_10 = true; saveState(); }
+    input.classList.add('correct');
+    card.classList.add('correct');
+    fb.className = 'feedback show correct';
+    fb.innerHTML = `&#10004; Correct! <span class="word-reveal correct-reveal">${word.w}</span>`;
+  } else {
+    practiceState.streak = 0;
+    if (currentMode.type === 'bee') practiceState.lives--;
+    input.classList.add('wrong');
+    card.classList.add('wrong');
+    fb.className = 'feedback show wrong';
+    const tip = getMnemonicTip(word.w);
+    fb.innerHTML = `&#10008; The correct spelling is: <span class="word-reveal wrong-reveal">${answer}</span> &rarr; <span class="word-reveal correct-reveal">${word.w}</span>
+      ${tip ? `<div class="mnemonic">Tip: ${tip}</div>` : ''}`;
+  }
+
+  // Change button text
+  const btn = document.querySelector('.input-area .btn-primary');
+  if (btn) { btn.textContent = 'Next'; btn.onclick = nextWord; }
+  input.disabled = true;
+  updateSidebar();
+}
+
+function nextWord() {
+  practiceState.current++;
+  renderPracticeUI();
+}
+
+function renderPracticeResults() {
+  const ps = practiceState;
+  const acc = ps.total > 0 ? Math.round(ps.correct / ps.total * 100) : 0;
+  // Save to history
+  state.history.push({ date: new Date().toISOString().split('T')[0], accuracy: acc, wordsCount: ps.total });
+  saveState();
+  if (acc >= 80) triggerConfetti();
+
+  const area = document.getElementById('contentArea');
+  area.innerHTML = `
+    <div class="card" style="text-align:center;">
+      <div style="font-size:48px;margin-bottom:16px;">${acc >= 80 ? '&#127881;' : acc >= 50 ? '&#128170;' : '&#128218;'}</div>
+      <h2 style="font-size:24px;font-weight:800;margin-bottom:8px;">Session Complete!</h2>
+      <p style="color:var(--text3);margin-bottom:24px;">You scored ${ps.correct} out of ${ps.total}</p>
+      <div class="stats-grid" style="max-width:400px;margin:0 auto 24px;">
+        <div class="stat-card"><div class="stat-value">${acc}%</div><div class="stat-label">Accuracy</div></div>
+        <div class="stat-card"><div class="stat-value">${ps.maxStreak}</div><div class="stat-label">Best Streak</div></div>
+      </div>
+      ${ps.words.filter((_,i) => {
+        // Show words that were answered wrong
+        return i < ps.current;
+      }).map((w, i) => {
+        const ws = getWordStat(w.w);
+        const wasCorrect = i < ps.correct ? true : false; // simplified
+        return '';
+      }).join('')}
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary btn-lg" onclick="startPracticeSession()">Practice Again</button>
+        <button class="btn btn-secondary btn-lg" onclick="navigate('dashboard')">Back to Dashboard</button>
+        <button class="btn btn-secondary btn-lg" onclick="navigate('report')">View Report</button>
+      </div>
+    </div>
+  `;
+}
+
+// ===================== CATEGORY VIEW =====================
+function renderCategory() {
+  const words = CATEGORIES[currentCat] || [];
+  const catColor = CAT_COLORS[currentCat] || '#999';
+  const mastered = words.filter(w => isMastered(w.w)).length;
+  return `
+    <div class="back-btn" onclick="navigate('dashboard')">&larr; Back</div>
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title" style="display:flex;align-items:center;gap:8px;">
+            <span class="dot" style="background:${catColor};width:12px;height:12px;border-radius:50%"></span>${currentCat}
+          </div>
+          <div class="card-subtitle">${mastered} of ${words.length} words mastered</div>
+        </div>
+        <button class="btn btn-primary" onclick="selectedCats=['${currentCat}'];startMode('definition')">Practice This Category</button>
+      </div>
+      <div style="height:8px;background:var(--bg4);border-radius:4px;overflow:hidden;margin-bottom:20px;">
+        <div style="height:100%;width:${mastered/words.length*100}%;background:${catColor};border-radius:4px;transition:width .3s"></div>
+      </div>
+      <div style="display:grid;gap:8px;">
+        ${words.map(w => {
+          const ws = getWordStat(w.w);
+          const acc = getAccuracy(w.w);
+          const m = isMastered(w.w);
+          return `<div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg3);border-radius:var(--radius-sm);border-left:3px solid ${m ? 'var(--success)' : ws.attempts > 0 ? 'var(--warning)' : 'var(--bg4)'}">
+            <span style="font-family:var(--mono);font-weight:600;width:180px;">${w.w}</span>
+            <span style="font-size:12px;color:var(--text3);flex:1;">${w.def}</span>
+            <span style="font-size:11px;color:var(--text4);">${acc !== null ? acc + '%' : 'New'}</span>
+            ${m ? '<span style="color:var(--success);font-size:14px;">&#10004;</span>' : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// ===================== ACHIEVEMENTS VIEW =====================
+function renderAchievements() {
+  return `
+    <div class="achievements-grid">
+      ${ACHIEVEMENTS.map(a => {
+        const earned = !!state.achievements[a.id];
+        return `<div class="achievement${earned ? ' earned' : ''}">
+          <div class="ach-icon">${a.icon}</div>
+          <div class="ach-name">${a.name}</div>
+          <div class="ach-desc">${a.desc}</div>
+          ${earned ? `<div style="font-size:10px;color:var(--success);margin-top:4px;">Earned ${new Date(state.achievements[a.id]).toLocaleDateString()}</div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
+// ===================== REPORT =====================
+function renderReport() {
+  const report = generateReport();
+  return `
+    <div class="report-container">
+      <div class="report-header">
+        <div class="card-title">Progress Report</div>
+        <button class="btn btn-primary" onclick="copyReport()">&#128203; Copy Report</button>
+      </div>
+      <div class="report-content">
+        <div class="report-text" id="reportText">${escapeHtml(report)}</div>
+      </div>
+    </div>
+  `;
+}
+
+function generateReport() {
+  const mastered = Object.keys(state.wordStats).filter(w => isMastered(w));
+  const inProgress = Object.keys(state.wordStats).filter(w => !isMastered(w) && getWordStat(w).attempts > 0);
+  const totalAcc = Object.values(state.wordStats).reduce((a,s) => a + s.correct, 0);
+  const totalAtt = Object.values(state.wordStats).reduce((a,s) => a + s.attempts, 0);
+  const acc = totalAtt > 0 ? Math.round(totalAcc / totalAtt * 100) : 0;
+
+  // Problem words
+  const problems = Object.entries(state.wordStats)
+    .filter(([w, s]) => s.attempts >= 2 && (s.correct / s.attempts) < 0.6)
+    .sort((a, b) => (a[1].correct / a[1].attempts) - (b[1].correct / b[1].attempts))
+    .slice(0, 20);
+
+  // Category breakdown
+  const catBreakdown = CAT_LIST.map(cat => {
+    const words = CATEGORIES[cat];
+    const m = words.filter(w => isMastered(w.w)).length;
+    const catAcc = words.reduce((a, w) => {
+      const s = getWordStat(w.w);
+      return { c: a.c + s.correct, t: a.t + s.attempts };
+    }, { c: 0, t: 0 });
+    const pct = catAcc.t > 0 ? Math.round(catAcc.c / catAcc.t * 100) : 0;
+    return `  ${cat.padEnd(30)} ${String(pct + '%').padStart(4)} (${m}/${words.length} mastered)`;
+  }).join('\n');
+
+  // Achievements
+  const earnedAch = ACHIEVEMENTS.filter(a => state.achievements[a.id])
+    .map(a => `  [x] ${a.name} - ${a.desc}`).join('\n') || '  None yet';
+
+  // History
+  const historyLines = (state.history || []).slice(-10)
+    .map(h => `  ${h.date}: ${h.accuracy}% (${h.wordsCount} words)`).join('\n') || '  No sessions recorded yet';
+
+  const today = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+
+  return `${'='.repeat(50)}
+    IELTS SPELLING PROGRESS REPORT
+${'='.repeat(50)}
+Date: ${today}
+Student Level: Level ${state.level} - ${getLevelTitle()}
+Overall Accuracy: ${acc}%
+Total Words Practiced: ${state.totalPracticed}
+Words Mastered: ${mastered.length} / ${WORD_DB.length}
+Words In Progress: ${inProgress.length}
+Current Streak: ${state.streak} days
+Daily Goal: ${state.dailyCount} / ${state.dailyGoal}
+
+${'─'.repeat(40)}
+  CATEGORY BREAKDOWN
+${'─'.repeat(40)}
+${catBreakdown}
+
+${'─'.repeat(40)}
+  PROBLEM WORDS
+${'─'.repeat(40)}
+${problems.length > 0 ? problems.map(([w, s]) =>
+  `  ${w.padEnd(25)} attempted ${s.attempts}x, accuracy ${Math.round(s.correct/s.attempts*100)}%`
+).join('\n') : '  No problem words identified yet'}
+
+${'─'.repeat(40)}
+  ACHIEVEMENTS
+${'─'.repeat(40)}
+${earnedAch}
+
+${'─'.repeat(40)}
+  SESSION HISTORY (Last 10)
+${'─'.repeat(40)}
+${historyLines}
+
+${'─'.repeat(40)}
+  MASTERED WORDS (${mastered.length})
+${'─'.repeat(40)}
+${mastered.length > 0 ? '  ' + mastered.sort().join(', ') : '  None yet - keep practicing!'}
+
+${'='.repeat(50)}
+  Generated by IELTS Spelling Master
+  Total words in database: ${WORD_DB.length}
+${'='.repeat(50)}`;
+}
+
+function copyReport() {
+  const text = document.getElementById('reportText').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copyToast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2500);
+  });
+}
+
+function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ===================== SETTINGS =====================
+function renderSettings() {
+  return `
+    <div class="card">
+      <div class="card-title" style="margin-bottom:16px">Settings</div>
+      <div class="settings-row">
+        <div class="settings-label">Daily Goal<small>Words to practice per day</small></div>
+        <select onchange="state.dailyGoal=parseInt(this.value);saveState();updateSidebar();">
+          ${[10,15,20,30,50].map(n=>`<option value="${n}"${state.dailyGoal===n?' selected':''}>${n} words</option>`).join('')}
+        </select>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Voice Speed<small>Speed of word pronunciation</small></div>
+        <select onchange="state.settings.voiceRate=parseFloat(this.value);saveState();">
+          ${[{v:0.6,l:'Slow'},{v:0.8,l:'Normal'},{v:0.9,l:'Default'},{v:1.0,l:'Fast'}].map(o=>`<option value="${o.v}"${state.settings.voiceRate===o.v?' selected':''}>${o.l}</option>`).join('')}
+        </select>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Voice Accent<small>Pronunciation accent</small></div>
+        <select onchange="state.settings.voiceLang=this.value;saveState();">
+          ${[{v:'en-GB',l:'British English'},{v:'en-US',l:'American English'},{v:'en-AU',l:'Australian English'}].map(o=>`<option value="${o.v}"${state.settings.voiceLang===o.v?' selected':''}>${o.l}</option>`).join('')}
+        </select>
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">Reset Progress<small>Clear all data and start fresh</small></div>
+        <button class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? This will delete all progress.')){localStorage.removeItem('${LS_KEY}');location.reload();}">Reset All Data</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:8px">Word Database Stats</div>
+      <p style="font-size:13px;color:var(--text3);">Total words: <strong>${WORD_DB.length}</strong> across <strong>${CAT_LIST.length}</strong> categories</p>
+    </div>
+  `;
+}
+
+// ===================== INIT =====================
+function init() {
+  loadState();
+  if (state.theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('themeBtn').innerHTML = '&#9788; Light';
+  }
+  // Preload voices
+  if (window.speechSynthesis) { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices(); }
+  buildSidebar(); updateSidebar(); render();
+}
+init();
+</script>
+</body>
+</html>
